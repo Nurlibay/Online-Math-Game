@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "665156464962",
+    "project_id": "online-math-game-3e923",
+    "storage_bucket": "online-math-game-3e923.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665156464962:android:1e0506a3def86a4ab098db",
+        "android_client_info": {
+          "package_name": "uz.nurlibaydev.onlinemathgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665156464962-059hai13r3ksslphm6ndnud64t0v999g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.nurlibaydev.onlinemathgame",
+            "certificate_hash": "f3bd59f253740d9725c806b8f881133ebe26500a"
+          }
+        },
+        {
+          "client_id": "665156464962-58moi8q8om67jql8l8fm7ft9pdvss996.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZK614QX6mlvs0eLKzWXILv0rYzvURtMI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665156464962-58moi8q8om67jql8l8fm7ft9pdvss996.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
