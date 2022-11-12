@@ -13,12 +13,29 @@
         <action
             android:id="@+id/action_signInScreen_to_signUpScreen"
             app:destination="@id/signUpScreen" />
+        <action
+            android:id="@+id/action_signInScreen_to_mainContainer"
+            app:destination="@id/mainContainer" />
     </fragment>
 
     <fragment
         android:id="@+id/signUpScreen"
         android:name="uz.nurlibaydev.onlinemathgame.presentation.auth.signup.SignUpScreen"
         android:label="SignUpScreen"
-        tools:layout="@layout/screen_sign_up" />
+        tools:layout="@layout/screen_sign_up" >
+        <action
+            android:id="@+id/action_signUpScreen_to_signInScreen"
+            app:destination="@id/signInScreen" />
+        <action
+            android:id="@+id/action_signUpScreen_to_mainContainer"
+            app:destination="@id/mainContainer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mainContainer"
+        android:name="uz.nurlibaydev.onlinemathgame.presentation.main.MainContainer"
+        android:label="MainContainer"
+        tools:layout="@layout/screen_main_container"
+        />
 
 </navigation>

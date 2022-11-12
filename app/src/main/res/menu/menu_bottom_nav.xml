@@ -2,11 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/groupsScreen"
-        android:title="@string/timetable" />
+        android:id="@+id/playersScreen"
+        android:title="@string/players" />
 
     <item
-        android:id="@+id/teacherScreen"
-        android:title="@string/teachers" />
+        android:id="@+id/profileScreen"
+        android:icon="@drawable/ic_person"
+        android:title="@string/profile" />
 
 </menu>

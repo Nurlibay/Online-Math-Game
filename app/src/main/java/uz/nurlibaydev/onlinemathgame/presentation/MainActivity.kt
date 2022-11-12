@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
 
-    //private val pref: SharedPref by inject()
+    private val pref: SharedPref by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.findNavController()
 
-        //setLocale()
+        setLocale()
     }
 
     override fun onBackPressed() {
@@ -35,22 +35,22 @@ class MainActivity : AppCompatActivity() {
         navController.popBackStack()
     }
 
-//    private fun setLocale() {
-//        val localeName = pref.language
-//        val locale = Locale(localeName)
-//        val res = resources
-//        val dm = res.displayMetrics
-//        val conf = res.configuration
-//        conf.setLocale(locale)
-//        res.updateConfiguration(conf, dm)
-//    }
-//
-//    fun setNewLocale() {
-//        val refresh = Intent(this, MainActivity::class.java)
-//        refresh.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-//        this.intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-//        this.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//        startActivity(refresh)
-//    }
+    private fun setLocale() {
+        val localeName = pref.language
+        val locale = Locale(localeName)
+        val res = resources
+        val dm = res.displayMetrics
+        val conf = res.configuration
+        conf.setLocale(locale)
+        res.updateConfiguration(conf, dm)
+    }
+
+    fun setNewLocale() {
+        val refresh = Intent(this, MainActivity::class.java)
+        refresh.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        this.intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        this.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(refresh)
+    }
 
 }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/playersScreen">
+    app:startDestination="@id/mainScreen">
 
     <fragment
         android:id="@+id/playersScreen"
@@ -16,5 +16,11 @@
         android:name="uz.nurlibaydev.onlinemathgame.presentation.main.profile.ProfileScreen"
         android:label="ProfileScreen"
         tools:layout="@layout/screen_profile" />
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="uz.nurlibaydev.onlinemathgame.presentation.main.MainScreen"
+        android:label="MainScreen"
+        tools:layout="@layout/screen_main"
+        />
 
 </navigation>

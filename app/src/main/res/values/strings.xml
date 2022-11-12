@@ -42,5 +42,11 @@
     <string name="language">Langauge</string>
     <string name="english">English</string>
     <string name="russion">Russian</string>
+    <string name="players">Players</string>
+    <string name="math_game">Online Math Game</string>
+    <string name="play_now">Play Now</string>
+    <string name="info">Info</string>
+    <string name="share">Share App</string>
+    <string name="statistics">Statistics</string>
 
 </resources>
