@@ -1,9 +1,12 @@
 package uz.nurlibaydev.onlinemathgame.domain
 
+import uz.nurlibaydev.onlinemathgame.data.models.PlayerData
 import uz.nurlibaydev.onlinemathgame.data.source.helper.AuthHelper
+import uz.nurlibaydev.onlinemathgame.data.source.helper.PlayerHelper
 
 class MainRepositoryImpl(
-    private val authHelper: AuthHelper
+    private val authHelper: AuthHelper,
+    private val playerHelper: PlayerHelper
 ) : MainRepository {
     override fun signIn(
         email: String,
@@ -29,6 +32,13 @@ class MainRepositoryImpl(
         onSuccess: () -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
-        authHelper.addPlayerToDb(fullName, onSuccess, onFailure)
+        playerHelper.addPlayerToDb(fullName, onSuccess, onFailure)
+    }
+
+    override fun getAllPlayers(
+        onSuccess: (players: List<PlayerData>) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        playerHelper.getAllPlayers(onSuccess, onFailure)
     }
 }

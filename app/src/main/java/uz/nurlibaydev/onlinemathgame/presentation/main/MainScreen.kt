@@ -26,7 +26,7 @@ class MainScreen: Fragment(R.layout.screen_main) {
                 navController.navigate(MainScreenDirections.actionMainScreenToSettingsScreen())
             }
             playNow.onClick {
-
+                navController.navigate(MainScreenDirections.actionMainScreenToPlayersScreen())
             }
         }
     }

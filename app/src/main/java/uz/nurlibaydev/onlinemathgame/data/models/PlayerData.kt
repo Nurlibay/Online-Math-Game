@@ -5,10 +5,10 @@ package uz.nurlibaydev.onlinemathgame.data.models
  */
 
 data class PlayerData(
-    var id: String,
-    var name: String,
-    var img: String,
-    var score: Int,
-    var numberWin: Int,
-    var numberLost: Int
+    var id: String = "",
+    var name: String = "",
+    var img: String = "",
+    var score: Int = 0,
+    var numberWin: Int = 0,
+    var numberLost: Int = 0
 )

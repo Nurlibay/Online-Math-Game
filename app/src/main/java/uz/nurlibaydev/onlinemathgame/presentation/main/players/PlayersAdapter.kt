@@ -21,6 +21,7 @@ class PlayersAdapter: ListAdapter<PlayerData, PlayersAdapter.PlayerViewHolder>(P
                 Glide
                     .with(root.context)
                     .load(item.img)
+                    .placeholder(R.drawable.musk)
                     .centerCrop()
                     .into(ivPlayer)
                 tvPlayerName.text = item.name

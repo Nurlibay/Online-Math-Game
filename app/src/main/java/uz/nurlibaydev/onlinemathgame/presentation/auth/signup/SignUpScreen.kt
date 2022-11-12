@@ -63,7 +63,7 @@ class SignUpScreen : Fragment(R.layout.screen_sign_up) {
     }
 
     private fun setupObserverPlayerStatus() {
-        viewModel.signUpStatus.observe(viewLifecycleOwner) {
+        viewModel.playerStatus.observe(viewLifecycleOwner) {
             when (it.status) {
                 ResourceState.LOADING -> {
                     setLoading(true)

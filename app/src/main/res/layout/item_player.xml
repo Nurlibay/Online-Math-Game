@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_standard"
         android:text="Nurlibay"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/iv_player"
         app:layout_constraintStart_toEndOf="@id/iv_player"

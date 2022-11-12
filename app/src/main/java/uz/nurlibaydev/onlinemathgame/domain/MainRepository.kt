@@ -1,5 +1,7 @@
 package uz.nurlibaydev.onlinemathgame.domain
 
+import uz.nurlibaydev.onlinemathgame.data.models.PlayerData
+
 interface MainRepository {
     fun signIn(
         email: String,
@@ -19,6 +21,11 @@ interface MainRepository {
     fun addPlayerToDb(
         fullName: String,
         onSuccess: () -> Unit,
+        onFailure: (msg: String?) -> Unit
+    )
+
+    fun getAllPlayers(
+        onSuccess: (players: List<PlayerData>) -> Unit,
         onFailure: (msg: String?) -> Unit
     )
 }
