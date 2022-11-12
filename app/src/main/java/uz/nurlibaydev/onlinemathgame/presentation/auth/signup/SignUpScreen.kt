@@ -46,6 +46,7 @@ class SignUpScreen: Fragment(R.layout.screen_sign_up) {
                 }
                 ResourceState.SUCCESS -> {
                     setLoading(false)
+                    navController.navigate(SignUpScreenDirections.actionSignUpScreenToSignInScreen())
                 }
                 ResourceState.ERROR -> {
                     setLoading(false)
