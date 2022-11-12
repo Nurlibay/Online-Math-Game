@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import uz.nurlibaydev.onlinemathgame.R
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenMainBinding
+import uz.nurlibaydev.onlinemathgame.utils.extenions.onClick
 
 /**
  *  Created by Nurlibay Koshkinbaev on 12/11/2022 18:32
@@ -21,8 +22,11 @@ class MainScreen: Fragment(R.layout.screen_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            settings.setOnClickListener {
+            settings.onClick {
                 navController.navigate(MainScreenDirections.actionMainScreenToSettingsScreen())
+            }
+            playNow.onClick {
+
             }
         }
     }

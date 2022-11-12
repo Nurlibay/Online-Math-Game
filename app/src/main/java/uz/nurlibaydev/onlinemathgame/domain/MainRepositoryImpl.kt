@@ -23,4 +23,12 @@ class MainRepositoryImpl(
     ) {
         authHelper.signUp(fullName, email, password, onSuccess, onFailure)
     }
+
+    override fun addPlayerToDb(
+        fullName: String,
+        onSuccess: () -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        authHelper.addPlayerToDb(fullName, onSuccess, onFailure)
+    }
 }

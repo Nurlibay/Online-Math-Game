@@ -13,7 +13,7 @@ import uz.nurlibaydev.onlinemathgame.databinding.ScreenSignUpBinding
 import uz.nurlibaydev.onlinemathgame.utils.ResourceState
 import uz.nurlibaydev.onlinemathgame.utils.extenions.showMessage
 
-class SignUpScreen: Fragment(R.layout.screen_sign_up) {
+class SignUpScreen : Fragment(R.layout.screen_sign_up) {
 
     private val binding: ScreenSignUpBinding by viewBinding()
     private val navController: NavController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
@@ -36,6 +36,7 @@ class SignUpScreen: Fragment(R.layout.screen_sign_up) {
             }
         }
         setupObserverSignUpStatus()
+        setupObserverPlayerStatus()
     }
 
     private fun setupObserverSignUpStatus() {
@@ -46,7 +47,30 @@ class SignUpScreen: Fragment(R.layout.screen_sign_up) {
                 }
                 ResourceState.SUCCESS -> {
                     setLoading(false)
+                    viewModel.addPlayerToDb(binding.etFullName.text.toString())
                     navController.navigate(SignUpScreenDirections.actionSignUpScreenToSignInScreen())
+                }
+                ResourceState.ERROR -> {
+                    setLoading(false)
+                    showMessage(it.message.toString())
+                }
+                ResourceState.NETWORK_ERROR -> {
+                    setLoading(false)
+                    showMessage(getString(R.string.no_internet))
+                }
+            }
+        }
+    }
+
+    private fun setupObserverPlayerStatus() {
+        viewModel.signUpStatus.observe(viewLifecycleOwner) {
+            when (it.status) {
+                ResourceState.LOADING -> {
+                    setLoading(true)
+                }
+                ResourceState.SUCCESS -> {
+                    setLoading(false)
+                    showMessage("Player added to fireStore!")
                 }
                 ResourceState.ERROR -> {
                     setLoading(false)

@@ -5,7 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import org.koin.android.ext.android.inject
 import uz.nurlibaydev.onlinemathgame.R
+import uz.nurlibaydev.onlinemathgame.data.source.pref.SharedPref
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenSettingsBinding
 import uz.nurlibaydev.onlinemathgame.utils.extenions.onClick
 
@@ -16,11 +18,16 @@ import uz.nurlibaydev.onlinemathgame.utils.extenions.onClick
 class SettingsScreen: Fragment(R.layout.screen_settings) {
 
     private val binding: ScreenSettingsBinding by viewBinding()
+    private val prefs: SharedPref by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            tvLang.text = resources.getString(R.string.lang_text)
+            if(prefs.language == "en"){
+                tvLang.text = resources.getString(R.string.english)
+            } else {
+                tvLang.text = resources.getString(R.string.russion)
+            }
             containerSelectLanguage.onClick {
                 val dialog = LanguageDialog()
                 dialog.show(requireActivity().supportFragmentManager, "LanguageDialog")
