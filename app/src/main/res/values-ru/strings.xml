@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OnlineMathGame</string>
+    <string name="lang_text">Английский</string>
+    <string name="create_account">Зарегистрироваться</string>
+    <string name="full_name">ФИО</string>
+    <string name="email_address">Адрес электронной почты</string>
+    <string name="password">Пароль</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="already_have_an_account">У вас уже есть аккаунт?</string>
+    <string name="log_in">Логин</string>
+    <string name="sign_in">Войти</string>
+    <string name="dont_have_an_account">У вас нет аккаунта?</string>
+    <string name="password_length_condition">Пароль должен быть не менее 6 символов</string>
+    <string name="no_internet">Нет соединения с интернетом</string>
+    <string name="enter_full_name">Введите полное имя</string>
+    <string name="profile">Профиль</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="tvName">ФИО</string>
+    <string name="settings">Настройки</string>
+    <string name="language">Язык</string>
+    <string name="english">Английский</string>
+    <string name="russion">Русский</string>
+    <string name="players">Игроки</string>
+    <string name="math_game">Онлайн математическая игра</string>
+    <string name="play_now">Играть</string>
+    <string name="share">Поделиться</string>
+    <string name="statistics">Статистика</string>
+</resources>

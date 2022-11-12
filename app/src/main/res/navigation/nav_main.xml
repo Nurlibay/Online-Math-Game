@@ -21,6 +21,20 @@
         android:name="uz.nurlibaydev.onlinemathgame.presentation.main.MainScreen"
         android:label="MainScreen"
         tools:layout="@layout/screen_main"
-        />
+        >
+        <action
+            android:id="@+id/action_mainScreen_to_settingsScreen"
+            app:destination="@id/settingsScreen" />
+        <action
+            android:id="@+id/action_mainScreen_to_playersScreen"
+            app:destination="@id/playersScreen" />
+        <action
+            android:id="@+id/action_mainScreen_to_profileScreen"
+            app:destination="@id/profileScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsScreen"
+        android:name="uz.nurlibaydev.onlinemathgame.presentation.main.settings.SettingsScreen"
+        android:label="SettingsScreen" />
 
 </navigation>

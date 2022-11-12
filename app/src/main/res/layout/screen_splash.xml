@@ -13,6 +13,7 @@
         android:text="@string/math_game"
         android:textColor="@color/white"
         android:textSize="28sp"
+        android:gravity="center"
         android:fontFamily="@font/lilita_one_regular"
         app:layout_constraintBottom_toTopOf="@id/iv_math_icon"
         app:layout_constraintEnd_toEndOf="parent"
