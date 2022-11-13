@@ -82,15 +82,13 @@ class InvitationHelper(
     fun invitationListener(): Flow<ResultData<InvitationData>> = callbackFlow {
         fireStore.collection(Constants.PLAYERS).document(auth.uid!!)
             .collection(Constants.INVITATION)
-            .get()
-            .addOnSuccessListener {
-                val invitation = it.documents.map { docs ->
-                    docs.toObject(InvitationData::class.java)
-                }.find { invitationData ->
-                    invitationData?.status == 0
+            .whereEqualTo("status",0).addSnapshotListener { value, error ->
+                val list = value?.documents?.map {
+                    it.toObject(InvitationData::class.java)
                 }
-                if (invitation!=null)
-                trySend(ResultData.success(invitation))
+                if (list!=null&&list.isNotEmpty()){
+                    trySend(ResultData.success(list[0]!!))
+                }
             }
         awaitClose {
 
