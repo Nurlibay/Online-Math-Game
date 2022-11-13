@@ -6,7 +6,6 @@ import uz.nurlibaydev.onlinemathgame.data.models.InvitationData
 
 // Created by Jamshid Isoqov an 11/13/2022
 
-
 fun DocumentSnapshot.toGameEntity(): GameEntity {
     val id: String = this.id
     val status: Int = this["status"].toString().toInt()
@@ -14,6 +13,8 @@ fun DocumentSnapshot.toGameEntity(): GameEntity {
     val user1InCorrected: Int = this["user1InCorrected"].toString().toInt()
     val user2Corrected: Int = this["user2Corrected"].toString().toInt()
     val user2InCorrected: Int = this["user2InCorrected"].toString().toInt()
+    val user1Name: String = this["user1Name"].toString()
+    val user2Name: String = this["user2Name"].toString()
     val questions: String = this["questions"].toString()
     return GameEntity(
         id,
@@ -22,6 +23,8 @@ fun DocumentSnapshot.toGameEntity(): GameEntity {
         user1InCorrected,
         user2Corrected,
         user2InCorrected,
+        user1Name,
+        user2Name,
         questions
     )
 }
