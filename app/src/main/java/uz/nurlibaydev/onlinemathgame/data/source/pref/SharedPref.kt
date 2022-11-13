@@ -13,4 +13,6 @@ class SharedPref(context: Context) {
     var isSigned: Boolean by BooleanPreference(pref, false)
 
     var language: String by StringPreference(pref, "ru")
+
+    var fullName:String by StringPreference(pref,"You're name")
 }

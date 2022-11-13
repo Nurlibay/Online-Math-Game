@@ -7,6 +7,7 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import uz.nurlibaydev.onlinemathgame.data.source.helper.AuthHelper
+import uz.nurlibaydev.onlinemathgame.data.source.helper.InvitationHelper
 import uz.nurlibaydev.onlinemathgame.data.source.helper.PlayerHelper
 import uz.nurlibaydev.onlinemathgame.data.source.pref.SharedPref
 import uz.nurlibaydev.onlinemathgame.domain.MainRepository
@@ -21,6 +22,7 @@ val dataModule = module {
     single { FirebaseStorage.getInstance() }
     single { AuthHelper(get()) }
     single { PlayerHelper(get(), get()) }
+    single { InvitationHelper(get(),get()) }
 }
 
 val sharedPrefModule = module {
@@ -28,7 +30,7 @@ val sharedPrefModule = module {
 }
 
 val repositoryModule = module {
-    single<MainRepository> { MainRepositoryImpl(get(), get()) }
+    single<MainRepository> { MainRepositoryImpl(get(), get(),get()) }
 }
 
 val viewModelModule = module {
