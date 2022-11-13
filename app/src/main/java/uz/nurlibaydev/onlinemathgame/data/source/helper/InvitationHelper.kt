@@ -22,7 +22,7 @@ class InvitationHelper(
     private val auth: FirebaseAuth
 ) {
 
-    fun uploadGameData(onSuccess: (String) -> Unit, onMessage: (String) -> Unit) {
+    fun uploadGameData(opponentName: String, onSuccess: (String) -> Unit, onMessage: (String) -> Unit) {
 
         val quizData = ArrayList<MathQuizData>(10)
 
@@ -31,7 +31,7 @@ class InvitationHelper(
             quizData.add(quiz)
         }
 
-        val gameEntity = GameData(list = quizData).toGameEntity()
+        val gameEntity = GameData(list = quizData, user1Name = sharedPref.fullName, user2Name = opponentName).toGameEntity()
 
         fireStore.collection(Constants.GAMES)
             .document(gameEntity.id)

@@ -11,6 +11,8 @@ data class GameEntity(
     val user1InCorrected: Int = 0,
     val user2Corrected: Int = 0,
     val user2InCorrected: Int = 0,
+    val user1Name: String = "",
+    val user2Name: String = "",
     val questions: String=""
 ) {
     fun toGameData(): GameData {
@@ -23,6 +25,8 @@ data class GameEntity(
             user1InCorrected,
             user2Corrected,
             user2InCorrected,
+            user1Name,
+            user2Name,
             list
         )
     }

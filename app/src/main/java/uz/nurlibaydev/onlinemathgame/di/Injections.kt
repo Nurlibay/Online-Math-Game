@@ -15,6 +15,7 @@ import uz.nurlibaydev.onlinemathgame.domain.MainRepositoryImpl
 import uz.nurlibaydev.onlinemathgame.presentation.MainViewModel
 import uz.nurlibaydev.onlinemathgame.presentation.auth.signin.SignInViewModel
 import uz.nurlibaydev.onlinemathgame.presentation.auth.signup.SignUpViewModel
+import uz.nurlibaydev.onlinemathgame.presentation.main.game.GameViewModel
 import uz.nurlibaydev.onlinemathgame.presentation.main.players.PlayerViewModel
 
 val dataModule = module {
@@ -39,4 +40,5 @@ val viewModelModule = module {
     viewModel { SignUpViewModel(get()) }
     viewModel { PlayerViewModel(get()) }
     viewModel { MainViewModel(get()) }
+    viewModel { GameViewModel(get()) }
 }

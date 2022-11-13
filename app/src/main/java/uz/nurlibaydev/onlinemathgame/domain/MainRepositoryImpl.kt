@@ -50,8 +50,8 @@ class MainRepositoryImpl(
         playerHelper.getAllPlayers(onSuccess, onFailure)
     }
 
-    override fun uploadGameData(onSuccess: (String) -> Unit, onMessage: (String) -> Unit) {
-        invitationHelper.uploadGameData(onSuccess, onMessage)
+    override fun uploadGameData(opponentName: String, onSuccess: (String) -> Unit, onMessage: (String) -> Unit) {
+        invitationHelper.uploadGameData(opponentName, onSuccess, onMessage)
     }
 
     override fun setInvitation(
@@ -66,8 +66,7 @@ class MainRepositoryImpl(
     override fun playGameListener(gameId: String): Flow<ResultData<GameData>> =
         invitationHelper.playGameListener(gameId)
 
-    override fun invitationListener(): Flow<ResultData<InvitationData>> =
-        invitationHelper.invitationListener()
+    override fun invitationListener(): Flow<ResultData<InvitationData>> = invitationHelper.invitationListener()
 
     override fun confirmInvitationStatus(
         status: Int,

@@ -15,6 +15,8 @@ data class GameData(
     val user1InCorrected: Int = 0,
     val user2Corrected: Int = 0,
     val user2InCorrected: Int = 0,
+    val user1Name: String = "",
+    val user2Name: String = "",
     val list: List<MathQuizData>
 ):Parcelable {
     fun toGameEntity(): GameEntity {
@@ -27,6 +29,8 @@ data class GameData(
             user1InCorrected,
             user2Corrected,
             user2InCorrected,
+            user1Name,
+            user2Name,
             jsonString
         )
     }

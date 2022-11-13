@@ -7,6 +7,7 @@ import uz.nurlibaydev.onlinemathgame.data.models.PlayerData
 import uz.nurlibaydev.onlinemathgame.utils.ResultData
 
 interface MainRepository {
+
     fun signIn(
         email: String, password: String, onSuccess: () -> Unit, onFailure: (msg: String?) -> Unit
     )
@@ -27,7 +28,7 @@ interface MainRepository {
         onSuccess: (players: List<PlayerData>) -> Unit, onFailure: (msg: String?) -> Unit
     )
 
-    fun uploadGameData(onSuccess: (String) -> Unit, onMessage: (String) -> Unit)
+    fun uploadGameData(opponentName: String, onSuccess: (String) -> Unit, onMessage: (String) -> Unit)
 
     fun setInvitation(
         userId: String, gameId: String, onSuccess: () -> Unit, onMessage: (String) -> Unit

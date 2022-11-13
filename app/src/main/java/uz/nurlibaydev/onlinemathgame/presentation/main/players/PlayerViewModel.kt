@@ -47,7 +47,7 @@ class PlayerViewModel(
 
     fun sendInvitation(playerData: PlayerData) {
         _invitationStatusListener.value = Resource.loading()
-        mainRepository.uploadGameData({ gameId ->
+        mainRepository.uploadGameData(playerData.name, { gameId ->
             mainRepository.setInvitation(playerData.id, gameId, {
                 _invitationStatusListener.value = Resource.success(Unit)
             }) { error ->

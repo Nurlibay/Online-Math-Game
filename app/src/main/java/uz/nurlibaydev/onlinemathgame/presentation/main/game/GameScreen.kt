@@ -66,10 +66,10 @@ class GameScreen : Fragment(R.layout.screen_game) {
                     tvMyCorrectAnswers.text = it.user2Corrected.toString()
                     tvMyIncorrectAnswers.text = it.user2InCorrected.toString()
                 } else {
-                    tvCorrectAnswers.text = it.user1Corrected.toString()
-                    tvIncorrectAnswers.text = it.user1InCorrected.toString()
-                    tvMyCorrectAnswers.text = it.user2Corrected.toString()
-                    tvMyIncorrectAnswers.text = it.user2InCorrected.toString()
+                    tvCorrectAnswers.text = it.user2Corrected.toString()
+                    tvIncorrectAnswers.text = it.user2InCorrected.toString()
+                    tvMyCorrectAnswers.text = it.user1Corrected.toString()
+                    tvMyIncorrectAnswers.text = it.user1InCorrected.toString()
                 }
             }
         }
