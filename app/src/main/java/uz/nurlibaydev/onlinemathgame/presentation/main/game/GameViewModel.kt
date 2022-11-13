@@ -23,6 +23,9 @@ class GameViewModel(
         _currentQuestion.value = Resource.success(currentQuestion)
     }
 
+    private var _openResultDialog: MutableLiveData<Boolean> = MutableLiveData()
+    val openResultDialog: LiveData<Boolean> = _openResultDialog
+
     fun setAnswer(
         gameId: String,
         userType: Int,
@@ -32,6 +35,7 @@ class GameViewModel(
         mainRepository.setAnswers(gameId, userType, correctAnswers, inCorrectAnswers,
             {
                 _currentQuestion.value = Resource.success(++currentQuestion)
+                if(currentQuestion == 10) _openResultDialog.value = true
             },
             {
                 _currentQuestion.value = Resource.error("Unknown error occured!")

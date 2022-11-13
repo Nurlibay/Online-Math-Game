@@ -11,6 +11,7 @@ import uz.nurlibaydev.onlinemathgame.R
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenGameBinding
 import uz.nurlibaydev.onlinemathgame.presentation.MainViewModel
 import uz.nurlibaydev.onlinemathgame.utils.ResourceState
+import uz.nurlibaydev.onlinemathgame.utils.extenions.enabled
 import uz.nurlibaydev.onlinemathgame.utils.extenions.onClick
 
 /**
@@ -33,18 +34,31 @@ class GameScreen : Fragment(R.layout.screen_game) {
         binding.apply {
             btnFirst.onClick {
                 btnClicked(btnFirst.text.toString().toInt())
+                disabledButtons(false)
             }
             btnSecond.onClick {
                 btnClicked(btnSecond.text.toString().toInt())
+                disabledButtons(false)
             }
             btnThird.onClick {
                 btnClicked(btnThird.text.toString().toInt())
+                disabledButtons(false)
             }
             btnFourth.onClick {
                 btnClicked(btnFourth.text.toString().toInt())
+                disabledButtons(false)
             }
         }
         setupObserver()
+    }
+
+    private fun disabledButtons(state: Boolean) {
+        binding.apply {
+            btnFirst.isEnabled = state
+            btnSecond.isEnabled = state
+            btnThird.isEnabled = state
+            btnFourth.isEnabled = state
+        }
     }
 
     private fun btnClicked(answer: Int) {
@@ -65,11 +79,13 @@ class GameScreen : Fragment(R.layout.screen_game) {
                     tvIncorrectAnswers.text = it.user1InCorrected.toString()
                     tvMyCorrectAnswers.text = it.user2Corrected.toString()
                     tvMyIncorrectAnswers.text = it.user2InCorrected.toString()
+                    tvOpponentUser.text = it.user1Name
                 } else {
                     tvCorrectAnswers.text = it.user2Corrected.toString()
                     tvIncorrectAnswers.text = it.user2InCorrected.toString()
                     tvMyCorrectAnswers.text = it.user1Corrected.toString()
                     tvMyIncorrectAnswers.text = it.user1InCorrected.toString()
+                    tvOpponentUser.text = it.user2Name
                 }
             }
         }
@@ -84,11 +100,30 @@ class GameScreen : Fragment(R.layout.screen_game) {
                         btnSecond.text = data.variant2.toString()
                         btnThird.text = data.variant3.toString()
                         btnFourth.text = data.variant4.toString()
-                        tvQuestionNumber.text = "Question: ${it.data}/10"
+                        tvQuestionNumber.text = "Question: ${it.data + 1}/10"
+                        disabledButtons(true)
                     }
                 }
                 else -> {}
             }
+        }
+
+        gameViewModel.openResultDialog.observe(viewLifecycleOwner){
+            if(it){
+                openResultDialog(binding.tvMyCorrectAnswers.text.toString(), binding.tvCorrectAnswers.text.toString())
+            }
+        }
+    }
+
+    private fun openResultDialog(moves: String, time: String) {
+        val dialog = WinDialog(moves, time)
+        dialog.show(requireActivity().supportFragmentManager, "DIALOG_FRAGMENT")
+        dialog.nextButtonClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.homeButtonClickListener {
+            dialog.dismiss()
         }
     }
 }
