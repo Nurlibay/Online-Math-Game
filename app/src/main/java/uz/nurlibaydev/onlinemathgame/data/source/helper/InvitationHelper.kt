@@ -82,11 +82,11 @@ class InvitationHelper(
     fun invitationListener(): Flow<ResultData<InvitationData>> = callbackFlow {
         fireStore.collection(Constants.PLAYERS).document(auth.uid!!)
             .collection(Constants.INVITATION)
-            .whereEqualTo("status",0).addSnapshotListener { value, error ->
+            .whereEqualTo("status", 0).addSnapshotListener { value, error ->
                 val list = value?.documents?.map {
                     it.toObject(InvitationData::class.java)
                 }
-                if (list!=null&&list.isNotEmpty()){
+                if (list != null && list.isNotEmpty()) {
                     trySend(ResultData.success(list[0]!!))
                 }
             }

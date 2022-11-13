@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private val pref: SharedPref by inject()
 
-    private val viewModel:MainViewModel by viewModel()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,27 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         setLocale()
 
-        viewModel.invitationLiveData.observe(this) { data ->
 
-            AlertDialog.Builder(this)
-                .setTitle("Confirm")
-                .setMessage("Are you really play game ${data.userName}")
-                .setPositiveButton("Ok") { p0, _ ->
-                    viewModel.confirmInvitationStatus(1, data.gameId, {
-
-                    }) {
-
-                    }
-                    viewModel.confirmGameStatus(1, data.gameId, { data ->
-                        p0.dismiss()
-                        findNavController(R.id.fragment_container_view).navigate(
-                            NavMainDirections.actionGlobalGameScreen(data)
-                        )
-                    }) {
-
-                    }
-                }.create().show()
-        }
     }
 
     override fun onBackPressed() {
