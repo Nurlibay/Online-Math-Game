@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import uz.nurlibaydev.onlinemathgame.R
 import uz.nurlibaydev.onlinemathgame.data.models.PlayerData
 import uz.nurlibaydev.onlinemathgame.databinding.ItemPlayerBinding
+import uz.nurlibaydev.onlinemathgame.utils.extenions.onClick
 
 class PlayersAdapter: ListAdapter<PlayerData, PlayersAdapter.PlayerViewHolder>(PlayersItemCallBack) {
 
@@ -25,8 +26,17 @@ class PlayersAdapter: ListAdapter<PlayerData, PlayersAdapter.PlayerViewHolder>(P
                     .centerCrop()
                     .into(ivPlayer)
                 tvPlayerName.text = item.name
+
+                root.onClick {
+                    itemClick.invoke(item)
+                }
             }
         }
+    }
+
+    var itemClick: (data: (PlayerData)) -> Unit = {}
+    fun setOnItemClickListener(block: (PlayerData) -> Unit){
+        itemClick = block
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {

@@ -26,4 +26,7 @@
     <string name="share">Share App</string>
     <string name="statistics">Statistics</string>
     <string name="choose_your_opponent">Choose your opponent</string>
+    <string name="game_time">02:00</string>
+    <string name="time">Time:</string>
+    <string name="tv_question_status">Question: 5/10</string>
 </resources>

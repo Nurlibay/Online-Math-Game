@@ -34,6 +34,9 @@ class PlayersScreen: Fragment(R.layout.screen_players) {
                 findNavController().popBackStack()
             }
         }
+        adapter.setOnItemClickListener {
+            findNavController().navigate(PlayersScreenDirections.actionPlayersScreenToGameScreen())
+        }
         viewModel.getAllPlayers()
         setupObserver()
     }

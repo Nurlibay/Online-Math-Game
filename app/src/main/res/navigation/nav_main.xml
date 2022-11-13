@@ -9,7 +9,11 @@
         android:id="@+id/playersScreen"
         android:name="uz.nurlibaydev.onlinemathgame.presentation.main.players.PlayersScreen"
         android:label="PlayersScreen"
-        tools:layout="@layout/screen_players" />
+        tools:layout="@layout/screen_players" >
+        <action
+            android:id="@+id/action_playersScreen_to_gameScreen"
+            app:destination="@id/gameScreen" />
+    </fragment>
 
     <fragment
         android:id="@+id/profileScreen"
@@ -36,5 +40,9 @@
         android:id="@+id/settingsScreen"
         android:name="uz.nurlibaydev.onlinemathgame.presentation.main.settings.SettingsScreen"
         android:label="SettingsScreen" />
+    <fragment
+        android:id="@+id/gameScreen"
+        android:name="uz.nurlibaydev.onlinemathgame.presentation.main.game.GameScreen"
+        android:label="GameScreen" />
 
 </navigation>
