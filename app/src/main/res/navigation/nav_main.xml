@@ -47,6 +47,10 @@
         <argument
             android:name="game_data"
             app:argType="uz.nurlibaydev.onlinemathgame.data.models.GameData" />
+        <argument
+            android:name="user_type"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment><action android:id="@+id/action_global_gameScreen" app:destination="@id/gameScreen"/>
 
 </navigation>

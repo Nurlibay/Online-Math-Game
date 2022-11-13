@@ -16,6 +16,9 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
     private val _invitationLiveData: MutableLiveData<InvitationData> = MutableLiveData()
     val invitationLiveData: LiveData<InvitationData> get() = _invitationLiveData
 
+    private val _gameData: MutableLiveData<GameData> = MutableLiveData()
+    val gameData: LiveData<GameData> get() = _gameData
+
     init {
         viewModelScope.launch {
             repository.invitationListener().collectLatest {
@@ -25,7 +28,6 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
             }
         }
     }
-
 
     fun confirmInvitationStatus(
         status: Int, gameId: String, onSuccess: () -> Unit, onMessage: (String) -> Unit
@@ -47,5 +49,13 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
         }
     }
 
-
+    fun gameListen(gameId: String) {
+        viewModelScope.launch {
+            repository.playGameListener(gameId).collectLatest {
+                it.onSuccess { gameData ->
+                    _gameData.value = gameData
+                }
+            }
+        }
+    }
 }

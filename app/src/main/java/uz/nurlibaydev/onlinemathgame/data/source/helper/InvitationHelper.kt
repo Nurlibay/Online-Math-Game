@@ -62,7 +62,6 @@ class InvitationHelper(
     }
 
     fun playGameListener(gameId: String): Flow<ResultData<GameData>> = callbackFlow {
-
         val listener = fireStore.collection(Constants.GAMES)
             .document(gameId)
             .addSnapshotListener { value, error ->
@@ -135,4 +134,21 @@ class InvitationHelper(
             }
     }
 
+    fun setAnswers(
+        gameId: String,
+        userType: Int,
+        correctAnswerCount: Int,
+        inCorrectAnswerCount: Int,
+        onSuccess: () -> Unit,
+        onFailure: () -> Unit
+    ) {
+        fireStore.collection(Constants.GAMES).document(gameId).update(
+            "user${userType}Corrected", correctAnswerCount,
+            "user${userType}InCorrected", inCorrectAnswerCount
+        ).addOnSuccessListener {
+            onSuccess.invoke()
+        }.addOnFailureListener {
+            onFailure.invoke()
+        }
+    }
 }

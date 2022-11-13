@@ -82,4 +82,15 @@ class MainRepositoryImpl(
         onSuccess: (GameData) -> Unit,
         onMessage: (String) -> Unit
     ) = invitationHelper.confirmGameStatus(status, gameId, onSuccess, onMessage)
+
+    override fun setAnswers(
+        gameId: String,
+        userType: Int,
+        correctAnswerCount: Int,
+        inCorrectAnswerCount: Int,
+        onSuccess: () -> Unit,
+        onFailure: () -> Unit
+    ) {
+        invitationHelper.setAnswers(gameId, userType, correctAnswerCount, inCorrectAnswerCount, onSuccess, onFailure)
+    }
 }

@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.nurlibaydev.onlinemathgame.R
+import uz.nurlibaydev.onlinemathgame.data.source.pref.SharedPref
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenSignUpBinding
 import uz.nurlibaydev.onlinemathgame.utils.ResourceState
 import uz.nurlibaydev.onlinemathgame.utils.extenions.showMessage
@@ -18,6 +20,7 @@ class SignUpScreen : Fragment(R.layout.screen_sign_up) {
     private val binding: ScreenSignUpBinding by viewBinding()
     private val navController: NavController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
     private val viewModel: SignUpViewModel by viewModel()
+    private val prefs: SharedPref by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,6 +51,7 @@ class SignUpScreen : Fragment(R.layout.screen_sign_up) {
                 ResourceState.SUCCESS -> {
                     setLoading(false)
                     viewModel.addPlayerToDb(binding.etFullName.text.toString())
+                    prefs.fullName = binding.etFullName.text.toString()
                     navController.navigate(SignUpScreenDirections.actionSignUpScreenToSignInScreen())
                 }
                 ResourceState.ERROR -> {

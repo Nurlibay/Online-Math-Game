@@ -41,7 +41,7 @@ class MainScreen: Fragment(R.layout.screen_main) {
                     }
                     viewModel.confirmGameStatus(1, data.gameId, { data ->
                         p0.dismiss()
-                        findNavController().navigate(MainScreenDirections.actionGlobalGameScreen(data))
+                        findNavController().navigate(MainScreenDirections.actionGlobalGameScreen(data, 2))
                     }) {
 
                     }

@@ -79,11 +79,7 @@ class PlayersScreen : Fragment(R.layout.screen_players) {
                 }
                 ResourceState.SUCCESS -> {
                     setLoading(false)
-                    findNavController().navigate(
-                        PlayersScreenDirections.actionPlayersScreenToGameScreen(
-                            it.data!!
-                        )
-                    )
+                    findNavController().navigate(PlayersScreenDirections.actionPlayersScreenToGameScreen(it.data!!, 1))
                 }
                 ResourceState.ERROR -> {
                     setLoading(false)

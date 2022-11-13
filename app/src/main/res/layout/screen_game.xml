@@ -25,7 +25,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Correct: 7"
+                android:text="Correct: 0"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
@@ -36,7 +36,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Incorrect: 3"
+                android:text="Incorrect: 0"
                 android:textColor="#D11717"
                 android:textSize="18sp" />
 
@@ -125,6 +125,7 @@
                 tools:ignore="UnusedAttribute">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_question_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -182,7 +183,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Correct: 7"
+                android:text="Correct: 0"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
@@ -193,7 +194,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Incorrect: 3"
+                android:text="Incorrect: 0"
                 android:textColor="#D11717"
                 android:textSize="18sp" />
 

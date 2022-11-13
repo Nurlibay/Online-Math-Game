@@ -46,5 +46,13 @@ interface MainRepository {
         status: Int, gameId: String, onSuccess: (GameData) -> Unit, onMessage: (String) -> Unit
     )
 
+    fun setAnswers(
+        gameId: String,
+        userType: Int,
+        correctAnswerCount: Int,
+        inCorrectAnswerCount: Int,
+        onSuccess: () -> Unit,
+        onFailure: () -> Unit
+    )
 
 }
