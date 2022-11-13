@@ -1,11 +1,13 @@
 package uz.nurlibaydev.onlinemathgame.data.source.helper
 
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import uz.nurlibaydev.onlinemathgame.data.mapper.toGameEntity
 import uz.nurlibaydev.onlinemathgame.data.models.GameData
+import uz.nurlibaydev.onlinemathgame.data.models.GameEntity
 import uz.nurlibaydev.onlinemathgame.data.models.InvitationData
 import uz.nurlibaydev.onlinemathgame.data.models.MathQuizData
 import uz.nurlibaydev.onlinemathgame.data.source.pref.SharedPref
@@ -16,7 +18,8 @@ import uz.nurlibaydev.onlinemathgame.utils.ResultData
 // Created by Jamshid Isoqov an 11/13/2022
 class InvitationHelper(
     private val fireStore: FirebaseFirestore,
-    private val sharedPref: SharedPref
+    private val sharedPref: SharedPref,
+    private val auth: FirebaseAuth
 ) {
 
     fun uploadGameData(onSuccess: (String) -> Unit, onMessage: (String) -> Unit) {
@@ -74,6 +77,64 @@ class InvitationHelper(
             listener.remove()
         }
 
+    }
+
+    fun invitationListener(): Flow<ResultData<InvitationData>> = callbackFlow {
+        fireStore.collection(Constants.PLAYERS).document(auth.uid!!)
+            .collection(Constants.INVITATION)
+            .get()
+            .addOnSuccessListener {
+                val invitation = it.documents.map { docs ->
+                    docs.toObject(InvitationData::class.java)
+                }.find { invitationData ->
+                    invitationData?.status == 0
+                }
+                if (invitation!=null)
+                trySend(ResultData.success(invitation))
+            }
+        awaitClose {
+
+        }
+    }
+
+    fun confirmInvitationStatus(
+        status: Int,
+        gameId: String,
+        onSuccess: () -> Unit,
+        onMessage: (String) -> Unit
+    ) {
+        fireStore.collection(Constants.PLAYERS).document(auth.uid!!)
+            .collection(Constants.INVITATION)
+            .document(gameId)
+            .update(mapOf("status" to status))
+            .addOnSuccessListener {
+                onSuccess.invoke()
+            }.addOnFailureListener {
+                onMessage.invoke(it.localizedMessage ?: "Unknown error")
+            }
+    }
+
+    fun confirmGameStatus(
+        status: Int,
+        gameId: String,
+        onSuccess: (GameData) -> Unit,
+        onMessage: (String) -> Unit
+    ) {
+        fireStore.collection(Constants.GAMES).document(gameId)
+            .update(mapOf("status" to status))
+            .addOnSuccessListener {
+                if (status == 1) {
+                    fireStore.collection(Constants.GAMES).document(gameId).get()
+                        .addOnSuccessListener {
+                            val data = it.toObject(GameEntity::class.java)
+                            if (data != null) {
+                                onSuccess.invoke(data.toGameData())
+                            }
+                        }
+                }
+            }.addOnFailureListener {
+                onMessage.invoke(it.localizedMessage ?: "Unknown error")
+            }
     }
 
 }

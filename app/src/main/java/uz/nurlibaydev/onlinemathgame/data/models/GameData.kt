@@ -1,10 +1,13 @@
 package uz.nurlibaydev.onlinemathgame.data.models
 
+import android.os.Parcelable
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.parcelize.Parcelize
 import java.util.*
 
 // Created by Jamshid Isoqov an 11/13/2022
+@Parcelize
 data class GameData(
     val id: String = UUID.randomUUID().toString(),
     val status: Int = 0,
@@ -13,7 +16,7 @@ data class GameData(
     val user2Corrected: Int = 0,
     val user2InCorrected: Int = 0,
     val list: List<MathQuizData>
-) {
+):Parcelable {
     fun toGameEntity(): GameEntity {
         val type = object : TypeToken<List<MathQuizData>>() {}.type
         val jsonString = Gson().toJson(list, type)

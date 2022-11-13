@@ -43,6 +43,10 @@
     <fragment
         android:id="@+id/gameScreen"
         android:name="uz.nurlibaydev.onlinemathgame.presentation.main.game.GameScreen"
-        android:label="GameScreen" />
+        android:label="GameScreen" >
+        <argument
+            android:name="game_data"
+            app:argType="uz.nurlibaydev.onlinemathgame.data.models.GameData" />
+    </fragment><action android:id="@+id/action_global_gameScreen" app:destination="@id/gameScreen"/>
 
 </navigation>

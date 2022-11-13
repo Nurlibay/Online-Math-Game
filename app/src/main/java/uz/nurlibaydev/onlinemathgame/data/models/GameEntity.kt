@@ -5,13 +5,13 @@ import com.google.gson.reflect.TypeToken
 
 // Created by Jamshid Isoqov an 11/13/2022
 data class GameEntity(
-    val id: String,
+    val id: String="",
     val status: Int = 0,
     val user1Corrected: Int = 0,
     val user1InCorrected: Int = 0,
     val user2Corrected: Int = 0,
     val user2InCorrected: Int = 0,
-    val questions: String
+    val questions: String=""
 ) {
     fun toGameData(): GameData {
         val type = object : TypeToken<List<MathQuizData>>() {}.type

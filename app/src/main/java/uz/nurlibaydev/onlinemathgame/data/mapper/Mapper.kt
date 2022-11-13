@@ -2,6 +2,7 @@ package uz.nurlibaydev.onlinemathgame.data.mapper
 
 import com.google.firebase.firestore.DocumentSnapshot
 import uz.nurlibaydev.onlinemathgame.data.models.GameEntity
+import uz.nurlibaydev.onlinemathgame.data.models.InvitationData
 
 // Created by Jamshid Isoqov an 11/13/2022
 
@@ -23,4 +24,11 @@ fun DocumentSnapshot.toGameEntity(): GameEntity {
         user2InCorrected,
         questions
     )
+}
+
+fun DocumentSnapshot.toInvitationData(): InvitationData {
+    val gameId: String = this["gameId"].toString()
+    val userName: String = this["userName"].toString()
+    val status: Int = this["status"].toString().toInt()
+    return InvitationData(gameId, userName,status)
 }

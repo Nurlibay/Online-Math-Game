@@ -12,6 +12,7 @@ import uz.nurlibaydev.onlinemathgame.data.source.helper.PlayerHelper
 import uz.nurlibaydev.onlinemathgame.data.source.pref.SharedPref
 import uz.nurlibaydev.onlinemathgame.domain.MainRepository
 import uz.nurlibaydev.onlinemathgame.domain.MainRepositoryImpl
+import uz.nurlibaydev.onlinemathgame.presentation.MainViewModel
 import uz.nurlibaydev.onlinemathgame.presentation.auth.signin.SignInViewModel
 import uz.nurlibaydev.onlinemathgame.presentation.auth.signup.SignUpViewModel
 import uz.nurlibaydev.onlinemathgame.presentation.main.players.PlayerViewModel
@@ -22,7 +23,7 @@ val dataModule = module {
     single { FirebaseStorage.getInstance() }
     single { AuthHelper(get()) }
     single { PlayerHelper(get(), get()) }
-    single { InvitationHelper(get(),get()) }
+    single { InvitationHelper(get(),get(),get()) }
 }
 
 val sharedPrefModule = module {
@@ -37,4 +38,5 @@ val viewModelModule = module {
     viewModel { SignInViewModel(get()) }
     viewModel { SignUpViewModel(get()) }
     viewModel { PlayerViewModel(get()) }
+    viewModel { MainViewModel(get()) }
 }

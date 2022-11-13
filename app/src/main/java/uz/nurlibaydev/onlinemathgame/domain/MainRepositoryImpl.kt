@@ -2,6 +2,7 @@ package uz.nurlibaydev.onlinemathgame.domain
 
 import kotlinx.coroutines.flow.Flow
 import uz.nurlibaydev.onlinemathgame.data.models.GameData
+import uz.nurlibaydev.onlinemathgame.data.models.InvitationData
 import uz.nurlibaydev.onlinemathgame.data.models.PlayerData
 import uz.nurlibaydev.onlinemathgame.data.source.helper.AuthHelper
 import uz.nurlibaydev.onlinemathgame.data.source.helper.InvitationHelper
@@ -64,4 +65,21 @@ class MainRepositoryImpl(
 
     override fun playGameListener(gameId: String): Flow<ResultData<GameData>> =
         invitationHelper.playGameListener(gameId)
+
+    override fun invitationListener(): Flow<ResultData<InvitationData>> =
+        invitationHelper.invitationListener()
+
+    override fun confirmInvitationStatus(
+        status: Int,
+        gameId: String,
+        onSuccess: () -> Unit,
+        onMessage: (String) -> Unit
+    ) = invitationHelper.confirmInvitationStatus(status, gameId, onSuccess, onMessage)
+
+    override fun confirmGameStatus(
+        status: Int,
+        gameId: String,
+        onSuccess: (GameData) -> Unit,
+        onMessage: (String) -> Unit
+    ) = invitationHelper.confirmGameStatus(status, gameId, onSuccess, onMessage)
 }
