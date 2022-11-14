@@ -18,4 +18,8 @@ class SharedPref(context: Context) {
     var fullName:String by StringPreference(pref,"You're name")
 
     var score:Int by IntPreference(pref,0)
+
+    var image:String by StringPreference(pref, "image")
+
+
 }

@@ -94,4 +94,8 @@ class MainRepositoryImpl(
     }
 
     override fun updateScore(score: Int, onSuccess: (Int) -> Unit, onFailure: (String) -> Unit)  = playerHelper.updateScore(score, onSuccess, onFailure)
+
+    override suspend fun updateUser()  = playerHelper.updateUser()
+
+    override suspend fun uploadImage(path: String): String  = playerHelper.uploadImage(path)
 }

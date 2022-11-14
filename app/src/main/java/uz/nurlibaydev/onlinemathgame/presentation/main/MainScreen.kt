@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bumptech.glide.Glide
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.nurlibaydev.onlinemathgame.R
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenMainBinding
@@ -78,6 +80,30 @@ class MainScreen : Fragment(R.layout.screen_main) {
             }
         }
 
+        binding.profileContainer.setOnClickListener {
+            findNavController().navigate(MainScreenDirections.actionMainScreenToProfileScreen())
+        }
+
+        viewModel.nameLiveData.observe(viewLifecycleOwner, nameObserver)
+        viewModel.imageLiveData.observe(viewLifecycleOwner, imageObserver)
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getNameImage()
+    }
+
+    private val nameObserver = Observer<String> {
+        binding.tvName.text = it
+    }
+
+    private val imageObserver = Observer<String> {
+        Glide.with(requireContext())
+            .load(it)
+            .placeholder(R.drawable.musk)
+            .into(binding.imageProfile)
 
     }
 }

@@ -58,4 +58,8 @@ interface MainRepository {
 
     fun updateScore(score: Int, onSuccess: (Int) -> Unit, onFailure: (String) -> Unit)
 
+    suspend fun updateUser()
+
+    suspend fun uploadImage(path:String):String
+
 }

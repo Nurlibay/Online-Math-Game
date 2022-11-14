@@ -17,14 +17,15 @@ import uz.nurlibaydev.onlinemathgame.presentation.auth.signin.SignInViewModel
 import uz.nurlibaydev.onlinemathgame.presentation.auth.signup.SignUpViewModel
 import uz.nurlibaydev.onlinemathgame.presentation.main.game.GameViewModel
 import uz.nurlibaydev.onlinemathgame.presentation.main.players.PlayerViewModel
+import uz.nurlibaydev.onlinemathgame.presentation.main.profile.ProfileViewModelImpl
 
 val dataModule = module {
     single { FirebaseAuth.getInstance() }
     single { FirebaseFirestore.getInstance() }
     single { FirebaseStorage.getInstance() }
     single { AuthHelper(get()) }
-    single { PlayerHelper(get(), get(),get()) }
-    single { InvitationHelper(get(),get(),get()) }
+    single { PlayerHelper(get(), get(), get()) }
+    single { InvitationHelper(get(), get(), get()) }
 }
 
 val sharedPrefModule = module {
@@ -32,13 +33,14 @@ val sharedPrefModule = module {
 }
 
 val repositoryModule = module {
-    single<MainRepository> { MainRepositoryImpl(get(), get(),get()) }
+    single<MainRepository> { MainRepositoryImpl(get(), get(), get()) }
 }
 
 val viewModelModule = module {
     viewModel { SignInViewModel(get()) }
     viewModel { SignUpViewModel(get()) }
     viewModel { PlayerViewModel(get()) }
-    viewModel { MainViewModel(get()) }
-    viewModel { GameViewModel(get(),get()) }
+    viewModel { MainViewModel(get(),get()) }
+    viewModel { GameViewModel(get(), get()) }
+    viewModel { ProfileViewModelImpl(get(), get()) }
 }

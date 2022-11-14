@@ -82,7 +82,7 @@ class PlayersScreen : Fragment(R.layout.screen_players) {
         viewModel.invitationStatusListener.observe(viewLifecycleOwner) {
             when (it.status) {
                 ResourceState.LOADING -> {
-                    dialog.show()
+                     dialog.show()
                 }
                 ResourceState.SUCCESS -> {
                 }

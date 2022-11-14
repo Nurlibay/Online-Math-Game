@@ -129,4 +129,7 @@ dependencies {
     implementation "ru.ldralighieri.corbind:corbind-lifecycle:$corbind_version"
     implementation "ru.ldralighieri.corbind:corbind-recyclerview:$corbind_version"
     implementation "ru.ldralighieri.corbind:corbind-viewpager2:$corbind_version"
+
+    //image picker
+    implementation 'com.github.Drjacky:ImagePicker:2.1.16'
 }

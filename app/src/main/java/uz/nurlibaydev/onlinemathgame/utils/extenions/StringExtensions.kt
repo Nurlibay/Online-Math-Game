@@ -1,9 +1,12 @@
 package uz.nurlibaydev.onlinemathgame.utils.extenions
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun String.coloredString(query: String?): Spannable {
     val spannable = SpannableStringBuilder(this)
@@ -25,4 +28,10 @@ fun String.coloredString(query: String?): Spannable {
         Spannable.SPAN_EXCLUSIVE_INCLUSIVE
     )
     return spannable
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentDate(): String {
+    val c = Calendar.getInstance().time
+    return SimpleDateFormat("MMM dd,yyyy").format(c).uppercase()
 }

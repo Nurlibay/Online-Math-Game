@@ -41,4 +41,11 @@
     <string name="close">Close</string>
     <string name="message">Message</string>
     <string name="progress">Progress</string>
+    <string name="account">Account</string>
+    <string name="change_account_name">Change account name</string>
+    <string name="support_us">Support us</string>
+    <string name="contact_us">Contact us</string>
+    <string name="change_image">Change profile image</string>
+    <string name="name">Name</string>
+    <string name="save">Save</string>
 </resources>
