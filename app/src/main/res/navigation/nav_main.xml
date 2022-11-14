@@ -54,6 +54,12 @@
             android:name="user_type"
             app:argType="integer"
             android:defaultValue="1" />
+        <action
+            android:id="@+id/action_gameScreen_to_mainScreen"
+            app:destination="@id/mainScreen"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_main"
+            app:popUpToInclusive="true" />
     </fragment>
     <action android:id="@+id/action_global_gameScreen" app:destination="@id/gameScreen"/>
 

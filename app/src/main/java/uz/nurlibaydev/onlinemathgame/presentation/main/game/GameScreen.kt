@@ -138,7 +138,7 @@ class GameScreen : Fragment(R.layout.screen_game) {
         val dialog = WinDialog(moves, time)
         dialog.show(requireActivity().supportFragmentManager, "DIALOG_FRAGMENT")
         dialog.closeButtonClickListener {
-            findNavController().popBackStack()
+            findNavController().navigate(GameScreenDirections.actionGameScreenToMainScreen())
         }
     }
 }
