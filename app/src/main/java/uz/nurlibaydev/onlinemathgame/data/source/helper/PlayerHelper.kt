@@ -21,7 +21,7 @@ class PlayerHelper(
 ) {
     fun addPlayerToDb(fullName: String, onSuccess: () -> Unit, onFailure: (msg: String?) -> Unit) {
         val playerData =
-            PlayerData(auth.currentUser!!.uid, fullName, auth.currentUser!!.email!!, 0)
+            PlayerData(auth.currentUser!!.uid, "", fullName, auth.currentUser!!.email!!, 0)
         db.collection(Constants.PLAYERS).document(playerData.id).set(playerData)
             .addOnSuccessListener {
                 onSuccess.invoke()
@@ -40,7 +40,13 @@ class PlayerHelper(
                 val players = it.documents.map { player ->
                     player.toObject(PlayerData::class.java)!!
                 }
-                onSuccess.invoke(players)
+                val playerList = mutableListOf<PlayerData>()
+                for(player in players){
+                    if(player.id != auth.uid.toString()){
+                        playerList.add(player)
+                    }
+                }
+                onSuccess.invoke(playerList)
             }
             .addOnFailureListener {
                 onFailure.invoke(it.localizedMessage)

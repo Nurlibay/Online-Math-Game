@@ -49,12 +49,12 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
             tvChangeImageIcon.setOnClickListener {
                 viewModel.changeImage()
             }
-            tvHelp.setOnClickListener {
-                viewModel.helpClicked()
-            }
-            tvSupportUs.setOnClickListener {
-                viewModel.supportClicked()
-            }
+//            tvHelp.setOnClickListener {
+//                viewModel.helpClicked()
+//            }
+//            tvSupportUs.setOnClickListener {
+//                viewModel.supportClicked()
+//            }
         }
         viewModel.nameLiveData.observe(viewLifecycleOwner, nameObserver)
         viewModel.imageLiveData.observe(viewLifecycleOwner, imageObserver)
@@ -91,7 +91,7 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
                 mProfileUri = uri
             }
         }
-
+    
     private val changeImageObserver = Observer<Unit> {
         ImagePicker.with(requireActivity())
             .crop()

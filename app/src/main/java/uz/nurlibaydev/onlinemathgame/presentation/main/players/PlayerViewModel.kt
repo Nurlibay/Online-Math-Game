@@ -18,6 +18,7 @@ import uz.nurlibaydev.onlinemathgame.utils.Resource
 class PlayerViewModel(
     private val mainRepository: MainRepository
 ) : ViewModel() {
+
     private var _players: MutableLiveData<Resource<List<PlayerData>>> = MutableLiveData()
     val playerStatus: LiveData<Resource<List<PlayerData>>> get() = _players
 

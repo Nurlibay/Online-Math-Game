@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -128,12 +129,8 @@ class GameScreen : Fragment(R.layout.screen_game) {
     private fun openResultDialog(moves: String, time: String) {
         val dialog = WinDialog(moves, time)
         dialog.show(requireActivity().supportFragmentManager, "DIALOG_FRAGMENT")
-        dialog.nextButtonClickListener {
-            dialog.dismiss()
-        }
-
-        dialog.homeButtonClickListener {
-            dialog.dismiss()
+        dialog.closeButtonClickListener {
+            findNavController().popBackStack()
         }
     }
 }

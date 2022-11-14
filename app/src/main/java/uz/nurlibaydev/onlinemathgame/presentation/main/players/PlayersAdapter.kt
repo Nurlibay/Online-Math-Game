@@ -12,8 +12,7 @@ import uz.nurlibaydev.onlinemathgame.data.models.PlayerData
 import uz.nurlibaydev.onlinemathgame.databinding.ItemPlayerBinding
 import uz.nurlibaydev.onlinemathgame.utils.extenions.onClick
 
-class PlayersAdapter :
-    ListAdapter<PlayerData, PlayersAdapter.PlayerViewHolder>(PlayersItemCallBack) {
+class PlayersAdapter : ListAdapter<PlayerData, PlayersAdapter.PlayerViewHolder>(PlayersItemCallBack) {
 
     inner class PlayerViewHolder(private val binding: ItemPlayerBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -21,9 +20,7 @@ class PlayersAdapter :
         fun bind() {
             val item = getItem(absoluteAdapterPosition)
             binding.apply {
-
                 tvDate.text = "Since ${item.date}"
-
                 tvScore.text = "${item.score} score"
 
                 Glide
@@ -47,11 +44,7 @@ class PlayersAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
-        return PlayerViewHolder(
-            ItemPlayerBinding.bind(
-                LayoutInflater.from(parent.context).inflate(R.layout.item_player, parent, false)
-            )
-        )
+        return PlayerViewHolder(ItemPlayerBinding.bind(LayoutInflater.from(parent.context).inflate(R.layout.item_player, parent, false)))
     }
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {

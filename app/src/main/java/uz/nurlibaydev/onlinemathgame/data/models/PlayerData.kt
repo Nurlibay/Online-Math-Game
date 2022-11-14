@@ -10,6 +10,7 @@ data class PlayerData(
     var id: String = "",
     var name: String = "",
     var img: String = "",
+    var email: String = "",
     var score: Int = 0,
     var date:String = getCurrentDate()
 )
