@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OnlineMathGame</string>
+    <string name="app_name">Math 2 Players</string>
     <string name="lang_text">Английский</string>
     <string name="create_account">Зарегистрироваться</string>
     <string name="full_name">ФИО</string>
@@ -26,4 +26,28 @@
     <string name="play_now">Играть</string>
     <string name="share">Поделиться</string>
     <string name="statistics">Статистика</string>
+
+    <string name="choose_your_opponent">Выбери своего соперника</string>
+    <string name="game_time">02:00</string>
+    <string name="time">Время:</string>
+    <string name="tv_question_status">Вопрос: 5/10</string>
+    <string name="result">Результат</string>
+    <string name="home">Дом</string>
+    <string name="next">Следующий</string>
+    <string name="your_score">Ваша оценка: 5/10</string>
+    <string name="opponent_score">Оценка соперника: 7/10</string>
+    <string name="confirm">Подтверждать</string>
+    <string name="cancel">Отмена</string>
+    <string name="yes">Да</string>
+    <string name="error">Ошибка</string>
+    <string name="close">Закрывать</string>
+    <string name="message">Сообщение</string>
+    <string name="progress">Прогресс</string>
+    <string name="account">Счет</string>
+    <string name="change_account_name">Изменить имя учетной записи</string>
+    <string name="support_us">Поддерживать нас</string>
+    <string name="contact_us">Свяжитесь с нами</string>
+    <string name="change_image">Изменить изображение профиля</string>
+    <string name="name">Имя</string>
+        <string name="save">Сохранять</string>
 </resources>

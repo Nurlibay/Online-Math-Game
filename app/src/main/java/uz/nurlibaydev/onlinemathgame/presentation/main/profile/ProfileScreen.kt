@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -27,7 +26,6 @@ import uz.nurlibaydev.onlinemathgame.utils.Constants
 
 class ProfileScreen : Fragment(R.layout.screen_profile) {
 
-
     private val binding: ScreenProfileBinding by viewBinding()
 
     private val viewModel: ProfileViewModel by viewModel<ProfileViewModelImpl>()
@@ -41,12 +39,10 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
         viewModel.contactLiveData.observe(this, contactObserver)
         viewModel.supportLiveData.observe(this, supportObserver)
         viewModel.backLiveData.observe(this, backListener)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
-
             tvChangeUserName.setOnClickListener {
                 viewModel.changeName()
             }
@@ -59,9 +55,6 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
             tvSupportUs.setOnClickListener {
                 viewModel.supportClicked()
             }
-
-
-
         }
         viewModel.nameLiveData.observe(viewLifecycleOwner, nameObserver)
         viewModel.imageLiveData.observe(viewLifecycleOwner, imageObserver)
@@ -74,7 +67,7 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
     private val imageObserver = Observer<String> {
         Glide.with(requireContext())
             .load(it)
-            .placeholder(R.drawable.musk)
+            .placeholder(R.drawable.user)
             .into(binding.imgUser)
     }
 
@@ -108,10 +101,7 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
             .createIntentFromDialog {
                 profileLauncher.launch(it)
             }
-
-
     }
-
 
     private val contactObserver = Observer<Unit> {
         val intent =
@@ -124,6 +114,4 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
     private val supportObserver = Observer<Unit> {
         Constants.goToPlayMarket(activity as MainActivity)
     }
-
-
 }

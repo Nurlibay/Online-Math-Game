@@ -34,11 +34,12 @@
                 android:layout_marginStart="@dimen/margin_standard"
                 android:text="@string/settings"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/icon_back"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpUsage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

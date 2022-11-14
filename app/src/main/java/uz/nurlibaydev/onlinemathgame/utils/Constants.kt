@@ -6,8 +6,8 @@ import android.net.Uri
 import uz.nurlibaydev.onlinemathgame.presentation.MainActivity
 
 object Constants {
-    fun goToPlayMarket(mainActivity: MainActivity) {
 
+    fun goToPlayMarket(mainActivity: MainActivity) {
         try {
             mainActivity.startActivity(
                 Intent(
@@ -23,8 +23,6 @@ object Constants {
                 )
             )
         }
-
-
     }
 
     const val GAMES = "game"

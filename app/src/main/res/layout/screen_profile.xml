@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/main_color">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,9 +15,10 @@
         android:layout_marginBottom="16dp"
         android:text="@string/profile"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpUsage" />
 
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -26,7 +27,7 @@
         android:layout_height="90dp"
         android:layout_marginTop="16dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/musk"
+        android:src="@drawable/user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
@@ -38,12 +39,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/img_user"
         app:layout_constraintStart_toStartOf="@id/img_user"
         app:layout_constraintTop_toBottomOf="@id/img_user"
-        tools:text="Martha Hays" />
+        tools:text="Martha Hays"
+        tools:ignore="SpUsage" />
 
 
     <LinearLayout
@@ -75,10 +77,11 @@
             android:padding="4dp"
             android:text="@string/change_account_name"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:drawableEndCompat="@drawable/ic_next"
-            app:drawableStartCompat="@drawable/ic_user" />
+            app:drawableStartCompat="@drawable/ic_user"
+            tools:ignore="SpUsage" />
 
         <TextView
             android:id="@+id/tv_change_image_icon"
@@ -91,10 +94,11 @@
             android:padding="4dp"
             android:text="@string/change_image"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:drawableEndCompat="@drawable/ic_next"
-            app:drawableStartCompat="@drawable/ic_camera" />
+            app:drawableStartCompat="@drawable/ic_camera"
+            tools:ignore="SpUsage" />
 
 
         <TextView
@@ -116,12 +120,13 @@
             android:padding="4dp"
             android:text="@string/contact_us"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:drawableEndCompat="@drawable/ic_next"
-            app:drawableStartCompat="@drawable/ic_flash" />
+            app:drawableStartCompat="@drawable/ic_flash"
+            tools:ignore="SpUsage" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_support_us"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -132,10 +137,11 @@
             android:padding="4dp"
             android:text="@string/support_us"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:drawableEndCompat="@drawable/ic_next"
-            app:drawableStartCompat="@drawable/ic_like" />
+            app:drawableStartCompat="@drawable/ic_like"
+            tools:ignore="SpUsage" />
 
     </LinearLayout>
 

@@ -76,9 +76,6 @@ class PlayersScreen : Fragment(R.layout.screen_players) {
         }
 
 
-
-
-
         viewModel.invitationStatusListener.observe(viewLifecycleOwner) {
             when (it.status) {
                 ResourceState.LOADING -> {
@@ -95,10 +92,7 @@ class PlayersScreen : Fragment(R.layout.screen_players) {
                     showError(getString(R.string.no_internet))
                 }
             }
-
         }
-
-
 
         viewModel.getAllPlayers()
         setupObserver()

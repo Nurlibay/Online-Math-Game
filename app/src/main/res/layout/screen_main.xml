@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/main_color"
     android:orientation="vertical">
 
@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-
         android:orientation="vertical">
 
         <LinearLayout
@@ -28,8 +27,8 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:scaleType="centerCrop"
-                app:shapeAppearanceOverlay="@style/circleImageView"
-                android:src="@drawable/musk" />
+                android:src="@drawable/user"
+                app:shapeAppearanceOverlay="@style/circleImageView" />
 
             <TextView
                 android:id="@+id/tv_name"
@@ -37,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_standard"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="20dp"
+                tools:ignore="SpUsage"
                 tools:text=" Hi Jamshid" />
         </LinearLayout>
 
@@ -100,8 +100,9 @@
                 android:gravity="center"
                 android:text="@string/play_now"
                 android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="24dp"
+                android:textStyle="bold"
+                tools:ignore="SpUsage" />
 
         </LinearLayout>
 
@@ -138,8 +139,9 @@
                 android:gravity="end"
                 android:text="@string/statistics"
                 android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="24dp"
+                android:textStyle="bold"
+                tools:ignore="SpUsage" />
 
         </LinearLayout>
 
@@ -174,8 +176,9 @@
                 android:fontFamily="@font/lilita_one_regular"
                 android:text="@string/settings"
                 android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="24dp"
+                android:textStyle="bold"
+                tools:ignore="SpUsage" />
 
         </LinearLayout>
 
@@ -209,8 +212,9 @@
                 android:fontFamily="@font/lilita_one_regular"
                 android:text="@string/share"
                 android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="24dp"
+                android:textStyle="bold"
+                tools:ignore="SpUsage" />
 
         </LinearLayout>
 

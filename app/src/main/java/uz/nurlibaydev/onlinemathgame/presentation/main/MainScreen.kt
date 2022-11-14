@@ -102,7 +102,7 @@ class MainScreen : Fragment(R.layout.screen_main) {
     private val imageObserver = Observer<String> {
         Glide.with(requireContext())
             .load(it)
-            .placeholder(R.drawable.musk)
+            .placeholder(R.drawable.user)
             .into(binding.imageProfile)
 
     }

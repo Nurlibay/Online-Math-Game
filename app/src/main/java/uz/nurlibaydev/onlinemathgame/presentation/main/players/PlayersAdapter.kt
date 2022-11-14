@@ -29,7 +29,7 @@ class PlayersAdapter :
                 Glide
                     .with(root.context)
                     .load(item.img)
-                    .placeholder(R.drawable.musk)
+                    .placeholder(R.drawable.user)
                     .centerCrop()
                     .into(ivPlayer)
                 tvPlayerName.text = item.name
