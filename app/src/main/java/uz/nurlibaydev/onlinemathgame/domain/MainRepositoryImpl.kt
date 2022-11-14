@@ -50,7 +50,11 @@ class MainRepositoryImpl(
         playerHelper.getAllPlayers(onSuccess, onFailure)
     }
 
-    override fun uploadGameData(opponentName: String, onSuccess: (String) -> Unit, onMessage: (String) -> Unit) {
+    override fun uploadGameData(
+        opponentName: String,
+        onSuccess: (String) -> Unit,
+        onMessage: (String) -> Unit
+    ) {
         invitationHelper.uploadGameData(opponentName, onSuccess, onMessage)
     }
 
@@ -66,7 +70,8 @@ class MainRepositoryImpl(
     override fun playGameListener(gameId: String): Flow<ResultData<GameData>> =
         invitationHelper.playGameListener(gameId)
 
-    override fun invitationListener(): Flow<ResultData<InvitationData>> = invitationHelper.invitationListener()
+    override fun invitationListener(): Flow<ResultData<InvitationData>> =
+        invitationHelper.invitationListener()
 
     override fun confirmInvitationStatus(
         status: Int,
@@ -90,12 +95,20 @@ class MainRepositoryImpl(
         onSuccess: () -> Unit,
         onFailure: () -> Unit
     ) {
-        invitationHelper.setAnswers(gameId, userType, correctAnswerCount, inCorrectAnswerCount, onSuccess, onFailure)
+        invitationHelper.setAnswers(
+            gameId,
+            userType,
+            correctAnswerCount,
+            inCorrectAnswerCount,
+            onSuccess,
+            onFailure
+        )
     }
 
-    override fun updateScore(score: Int, onSuccess: (Int) -> Unit, onFailure: (String) -> Unit)  = playerHelper.updateScore(score, onSuccess, onFailure)
+    override fun updateScore(score: Int, winCount: Int, lostCount: Int, onSuccess: (Int) -> Unit, onFailure: (String) -> Unit) =
+        playerHelper.updateScore(score, winCount, lostCount, onSuccess, onFailure)
 
-    override suspend fun updateUser()  = playerHelper.updateUser()
+    override suspend fun updateUser() = playerHelper.updateUser()
 
-    override suspend fun uploadImage(path: String): String  = playerHelper.uploadImage(path)
+    override suspend fun uploadImage(path: String): String = playerHelper.uploadImage(path)
 }

@@ -56,7 +56,7 @@ interface MainRepository {
         onFailure: () -> Unit
     )
 
-    fun updateScore(score: Int, onSuccess: (Int) -> Unit, onFailure: (String) -> Unit)
+    fun updateScore(score: Int,  winCount: Int, lostCount: Int, onSuccess: (Int) -> Unit, onFailure: (String) -> Unit)
 
     suspend fun updateUser()
 

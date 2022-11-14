@@ -29,6 +29,10 @@ class GameScreen : Fragment(R.layout.screen_game) {
     private var userType: Int = 0
     private var correctAnswers: Int = 0
     private var inCorrectAnswers: Int = 0
+    private var user1WinCount: Int = 0
+    private var user1LostCount: Int = 0
+    private var user2WinCount: Int = 0
+    private var user2LostCount: Int = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         userType = args.userType
@@ -117,11 +121,15 @@ class GameScreen : Fragment(R.layout.screen_game) {
 
         gameViewModel.openResultDialog.observe(viewLifecycleOwner) {
             if (it) {
-                gameViewModel.updateScore(correctAnswers * 5)
-                openResultDialog(
-                    binding.tvMyCorrectAnswers.text.toString(),
-                    "${correctAnswers * 5}"
-                )
+                if(binding.tvMyCorrectAnswers.text.toString().toInt() > binding.tvCorrectAnswers.text.toString().toInt()){
+                    gameViewModel.updateScore(correctAnswers * 5, ++user2WinCount, 0)
+                    gameViewModel.updateScore(correctAnswers * 5, 0, ++user1LostCount)
+                }
+                if(binding.tvMyCorrectAnswers.text.toString().toInt() < binding.tvCorrectAnswers.text.toString().toInt()){
+                    gameViewModel.updateScore(correctAnswers * 5, ++user1WinCount, 0)
+                    gameViewModel.updateScore(correctAnswers * 5, 0, ++user2LostCount)
+                }
+                openResultDialog(binding.tvMyCorrectAnswers.text.toString(), "${correctAnswers * 5}")
             }
         }
     }

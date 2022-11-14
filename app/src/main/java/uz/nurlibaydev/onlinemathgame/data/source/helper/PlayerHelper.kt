@@ -47,12 +47,12 @@ class PlayerHelper(
             }
     }
 
-    fun updateScore(score: Int, onSuccess: (Int) -> Unit, onFailure: (String) -> Unit) {
+    fun updateScore(score: Int, winCount: Int, lostCount: Int, onSuccess: (Int) -> Unit, onFailure: (String) -> Unit) {
         val lastScore = sharedPref.score + score
         db.collection(Constants.PLAYERS).document(auth.uid!!).update(
-            mapOf(
-                "score" to lastScore
-            )
+            "score", lastScore,
+            "winCount", winCount,
+            "lostCount", lostCount
         ).addOnSuccessListener {
             onSuccess.invoke(lastScore)
         }.addOnFailureListener { error ->

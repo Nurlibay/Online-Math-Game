@@ -48,8 +48,8 @@ class GameViewModel(
             })
     }
 
-    fun updateScore(score: Int) {
-        mainRepository.updateScore(score, {
+    fun updateScore(score: Int,  winCount: Int, lostCount: Int) {
+        mainRepository.updateScore(score, winCount, lostCount, {
             sharedPref.score = it
         }) {
             _currentQuestion.value = Resource.error(it)
