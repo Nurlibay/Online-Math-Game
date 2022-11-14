@@ -19,12 +19,16 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_player_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginStart="12dp"
         tools:text="Nurlibay"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:textColor="@color/black"
         android:textSize="18dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_score"
+        android:gravity="start"
         app:layout_constraintBottom_toTopOf="@id/tv_date"
         app:layout_constraintStart_toEndOf="@id/iv_player"
         app:layout_constraintTop_toTopOf="parent"

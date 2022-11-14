@@ -1,5 +1,6 @@
 package uz.nurlibaydev.onlinemathgame.presentation.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import uz.nurlibaydev.onlinemathgame.BuildConfig
 import uz.nurlibaydev.onlinemathgame.R
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenMainBinding
 import uz.nurlibaydev.onlinemathgame.presentation.MainViewModel
@@ -78,6 +80,9 @@ class MainScreen : Fragment(R.layout.screen_main) {
             playNow.onClick {
                 navController.navigate(MainScreenDirections.actionMainScreenToPlayersScreen())
             }
+            share.onClick {
+                shareApp()
+            }
         }
 
         binding.profileContainer.setOnClickListener {
@@ -104,6 +109,19 @@ class MainScreen : Fragment(R.layout.screen_main) {
             .load(it)
             .placeholder(R.drawable.user)
             .into(binding.imageProfile)
+    }
 
+    private fun shareApp() {
+        try {
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, R.string.app_name)
+            var shareMessage = getString(R.string.two_player_math_game).trim() + "\n"
+            shareMessage = "${shareMessage}https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}".trimIndent()
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_app)))
+        } catch (e: java.lang.Exception) {
+            e.toString()
+        }
     }
 }

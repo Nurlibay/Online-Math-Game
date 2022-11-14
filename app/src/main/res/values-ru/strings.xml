@@ -49,5 +49,9 @@
     <string name="contact_us">Свяжитесь с нами</string>
     <string name="change_image">Изменить изображение профиля</string>
     <string name="name">Имя</string>
-        <string name="save">Сохранять</string>
+    <string name="save">Сохранять</string>
+
+    <string name="share_app">Поделиться этим приложением</string>
+    <string name="two_player_math_game">Математическая онлайн-игра для двух игроков</string>
+
 </resources>

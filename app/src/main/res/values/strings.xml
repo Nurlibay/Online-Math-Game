@@ -48,4 +48,6 @@
     <string name="change_image">Change profile image</string>
     <string name="name">Name</string>
     <string name="save">Save</string>
+    <string name="share_app">Share This App</string>
+    <string name="two_player_math_game">Two Player Online Math Game</string>
 </resources>
