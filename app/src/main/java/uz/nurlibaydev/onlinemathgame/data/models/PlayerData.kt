@@ -12,5 +12,7 @@ data class PlayerData(
     var img: String = "",
     var email: String = "",
     var score: Int = 0,
-    var date:String = getCurrentDate()
+    var winCount: Int = 0,
+    var lostCount: Int = 0,
+    var date: String = getCurrentDate()
 )

@@ -124,5 +124,4 @@ class PlayersScreen : Fragment(R.layout.screen_players) {
             }
         }
     }
-
 }

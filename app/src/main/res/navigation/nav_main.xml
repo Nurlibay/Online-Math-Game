@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_mainScreen_to_profileScreen"
             app:destination="@id/profileScreen" />
+        <action
+            android:id="@+id/action_mainScreen_to_statisticsScreen"
+            app:destination="@id/statisticsScreen" />
     </fragment>
     <fragment
         android:id="@+id/settingsScreen"
@@ -51,6 +54,14 @@
             android:name="user_type"
             app:argType="integer"
             android:defaultValue="1" />
-    </fragment><action android:id="@+id/action_global_gameScreen" app:destination="@id/gameScreen"/>
+    </fragment>
+    <action android:id="@+id/action_global_gameScreen" app:destination="@id/gameScreen"/>
+
+    <fragment
+        android:id="@+id/statisticsScreen"
+        android:name="uz.nurlibaydev.onlinemathgame.presentation.main.statistika.StatisticsScreen"
+        android:label="StatisticsScreen"
+        tools:layout="@layout/screen_statistics"
+        />
 
 </navigation>

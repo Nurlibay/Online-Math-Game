@@ -27,9 +27,7 @@ import uz.nurlibaydev.onlinemathgame.utils.Constants
 class ProfileScreen : Fragment(R.layout.screen_profile) {
 
     private val binding: ScreenProfileBinding by viewBinding()
-
     private val viewModel: ProfileViewModel by viewModel<ProfileViewModelImpl>()
-
     private var mProfileUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,7 +89,7 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
                 mProfileUri = uri
             }
         }
-    
+
     private val changeImageObserver = Observer<Unit> {
         ImagePicker.with(requireActivity())
             .crop()
@@ -104,8 +102,7 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
     }
 
     private val contactObserver = Observer<Unit> {
-        val intent =
-            Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "isoqovjamshid01@gmail.com", null))
+        val intent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "isoqovjamshid01@gmail.com", null))
         intent.putExtra(Intent.EXTRA_SUBJECT, "Subject")
         intent.putExtra(Intent.EXTRA_TEXT, "")
         startActivity(Intent.createChooser(intent, "Choose an Email client :"))

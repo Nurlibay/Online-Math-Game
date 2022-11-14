@@ -83,6 +83,9 @@ class MainScreen : Fragment(R.layout.screen_main) {
             share.onClick {
                 shareApp()
             }
+            statistics.onClick {
+                navController.navigate(MainScreenDirections.actionMainScreenToStatisticsScreen())
+            }
         }
 
         binding.profileContainer.setOnClickListener {
