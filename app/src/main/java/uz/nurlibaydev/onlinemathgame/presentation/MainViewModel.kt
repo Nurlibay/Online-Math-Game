@@ -49,11 +49,13 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
         }
     }
 
-    fun gameListen(gameId: String) {
+    fun gameListen(gameId: String,onMessage: (String) -> Unit) {
         viewModelScope.launch {
             repository.playGameListener(gameId).collectLatest {
                 it.onSuccess { gameData ->
                     _gameData.value = gameData
+                }.onError { error->
+                    onMessage.invoke(error.localizedMessage?.toString() ?: "")
                 }
             }
         }

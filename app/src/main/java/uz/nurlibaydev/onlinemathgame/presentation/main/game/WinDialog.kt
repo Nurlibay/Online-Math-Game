@@ -1,5 +1,6 @@
 package uz.nurlibaydev.onlinemathgame.presentation.main.game
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -23,13 +24,14 @@ class WinDialog(private val user1Score: String, private val user2Score: String) 
         homeButtonClick = block
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = DialogResultBinding.bind(view).apply {
             requireDialog().window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             requireDialog().setCancelable(false)
-            tvMyScore.text = user1Score
-            tvOpponentScore.text = user2Score
+            tvMyScore.text = "Result :${user1Score}/10"
+            tvOpponentScore.text = "You're score : $user2Score"
             requireDialog().show()
 
             btnNext.setOnClickListener {

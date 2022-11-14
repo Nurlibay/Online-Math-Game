@@ -11,8 +11,9 @@ import uz.nurlibaydev.onlinemathgame.R
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenGameBinding
 import uz.nurlibaydev.onlinemathgame.presentation.MainViewModel
 import uz.nurlibaydev.onlinemathgame.utils.ResourceState
-import uz.nurlibaydev.onlinemathgame.utils.extenions.enabled
 import uz.nurlibaydev.onlinemathgame.utils.extenions.onClick
+import uz.nurlibaydev.onlinemathgame.utils.extenions.showError
+import uz.nurlibaydev.onlinemathgame.utils.extenions.showMessage
 
 /**
  *  Created by Nurlibay Koshkinbaev on 13/11/2022 14:04
@@ -30,7 +31,9 @@ class GameScreen : Fragment(R.layout.screen_game) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         userType = args.userType
-        viewModel.gameListen(args.gameData.id)
+        viewModel.gameListen(args.gameData.id){
+            showMessage(it)
+        }
         binding.apply {
             btnFirst.onClick {
                 btnClicked(btnFirst.text.toString().toInt())
@@ -48,6 +51,7 @@ class GameScreen : Fragment(R.layout.screen_game) {
                 btnClicked(btnFourth.text.toString().toInt())
                 disabledButtons(false)
             }
+            tvTime.start()
         }
         setupObserver()
     }
@@ -104,13 +108,19 @@ class GameScreen : Fragment(R.layout.screen_game) {
                         disabledButtons(true)
                     }
                 }
-                else -> {}
+                else -> {
+                    showError(it.message?:"Message")
+                }
             }
         }
 
-        gameViewModel.openResultDialog.observe(viewLifecycleOwner){
-            if(it){
-                openResultDialog(binding.tvMyCorrectAnswers.text.toString(), binding.tvCorrectAnswers.text.toString())
+        gameViewModel.openResultDialog.observe(viewLifecycleOwner) {
+            if (it) {
+                gameViewModel.updateScore(correctAnswers * 5)
+                openResultDialog(
+                    binding.tvMyCorrectAnswers.text.toString(),
+                    "${correctAnswers * 5}"
+                )
             }
         }
     }

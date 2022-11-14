@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import uz.nurlibaydev.onlinemathgame.utils.BooleanPreference
 import uz.nurlibaydev.onlinemathgame.utils.Constants
+import uz.nurlibaydev.onlinemathgame.utils.IntPreference
 import uz.nurlibaydev.onlinemathgame.utils.StringPreference
 
 class SharedPref(context: Context) {
@@ -15,4 +16,6 @@ class SharedPref(context: Context) {
     var language: String by StringPreference(pref, "ru")
 
     var fullName:String by StringPreference(pref,"You're name")
+
+    var score:Int by IntPreference(pref,0)
 }

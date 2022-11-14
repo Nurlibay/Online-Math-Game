@@ -2,24 +2,25 @@ package uz.nurlibaydev.onlinemathgame.presentation.main
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import uz.nurlibaydev.onlinemathgame.NavMainDirections
 import uz.nurlibaydev.onlinemathgame.R
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenMainBinding
 import uz.nurlibaydev.onlinemathgame.presentation.MainViewModel
 import uz.nurlibaydev.onlinemathgame.utils.extenions.onClick
+import uz.nurlibaydev.onlinemathgame.utils.extenions.showConfirmDialog
+import uz.nurlibaydev.onlinemathgame.utils.extenions.showError
+import uz.nurlibaydev.onlinemathgame.utils.extenions.showMessage
 
 /**
  *  Created by Nurlibay Koshkinbaev on 12/11/2022 18:32
  */
 
-class MainScreen: Fragment(R.layout.screen_main) {
+class MainScreen : Fragment(R.layout.screen_main) {
 
     private val binding: ScreenMainBinding by viewBinding()
     private val navController: NavController by lazy { findNavController() }
@@ -30,22 +31,39 @@ class MainScreen: Fragment(R.layout.screen_main) {
         super.onCreate(savedInstanceState)
         viewModel.invitationLiveData.observe(this) { data ->
 
-            AlertDialog.Builder(requireContext())
-                .setTitle("Confirm")
-                .setMessage("Are you really play game ${data.userName}")
-                .setPositiveButton("Ok") { p0, _ ->
-                    viewModel.confirmInvitationStatus(1, data.gameId, {
+            showConfirmDialog("Are you really play game ${data.userName}", {
 
-                    }) {
+                viewModel.confirmInvitationStatus(1, data.gameId, {
+                    showMessage("Invitation accepted", Toast.LENGTH_SHORT)
+                }) {
+                    showMessage("Game cancelled", Toast.LENGTH_SHORT)
+                }
 
-                    }
-                    viewModel.confirmGameStatus(1, data.gameId, { data ->
-                        p0.dismiss()
-                        findNavController().navigate(MainScreenDirections.actionGlobalGameScreen(data, 2))
-                    }) {
+                viewModel.confirmGameStatus(1, data.gameId, { data ->
+                    findNavController().navigate(
+                        MainScreenDirections.actionGlobalGameScreen(
+                            data,
+                            2
+                        )
+                    )
+                }) {
+                    showError(it)
+                }
+            }) {
+                viewModel.confirmGameStatus(-1, data.gameId, { _ ->
+                    showMessage("Game cancelled", Toast.LENGTH_SHORT)
+                }) {
+                    showError(it)
+                }
 
-                    }
-                }.create().show()
+                viewModel.confirmInvitationStatus(-1, data.gameId, {
+                    showMessage("Game cancelled", Toast.LENGTH_SHORT)
+                }) {
+                    showMessage("Game cancelled", Toast.LENGTH_SHORT)
+                }
+
+
+            }
         }
     }
 

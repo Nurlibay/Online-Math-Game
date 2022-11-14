@@ -56,4 +56,6 @@ interface MainRepository {
         onFailure: () -> Unit
     )
 
+    fun updateScore(score: Int, onSuccess: (Int) -> Unit, onFailure: (String) -> Unit)
+
 }

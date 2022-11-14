@@ -1,8 +1,10 @@
 package uz.nurlibaydev.onlinemathgame.presentation.main.game
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import uz.nurlibaydev.onlinemathgame.data.source.pref.SharedPref
 import uz.nurlibaydev.onlinemathgame.domain.MainRepository
 import uz.nurlibaydev.onlinemathgame.utils.Resource
 
@@ -11,7 +13,8 @@ import uz.nurlibaydev.onlinemathgame.utils.Resource
  */
 
 class GameViewModel(
-    private val mainRepository: MainRepository
+    private val mainRepository: MainRepository,
+    private val sharedPref: SharedPref
 ) : ViewModel() {
 
     private var _currentQuestion: MutableLiveData<Resource<Int>> = MutableLiveData()
@@ -26,6 +29,7 @@ class GameViewModel(
     private var _openResultDialog: MutableLiveData<Boolean> = MutableLiveData()
     val openResultDialog: LiveData<Boolean> = _openResultDialog
 
+    @SuppressLint("SuspiciousIndentation")
     fun setAnswer(
         gameId: String,
         userType: Int,
@@ -34,11 +38,21 @@ class GameViewModel(
     ) {
         mainRepository.setAnswers(gameId, userType, correctAnswers, inCorrectAnswers,
             {
-                _currentQuestion.value = Resource.success(++currentQuestion)
-                if(currentQuestion == 10) _openResultDialog.value = true
+                if (currentQuestion == 9) {
+                    _openResultDialog.value = true
+                } else
+                    _currentQuestion.value = Resource.success(++currentQuestion)
             },
             {
-                _currentQuestion.value = Resource.error("Unknown error occured!")
+                _currentQuestion.value = Resource.error("Unknown error occurred!")
             })
+    }
+
+    fun updateScore(score: Int) {
+        mainRepository.updateScore(score, {
+            sharedPref.score = it
+        }) {
+            _currentQuestion.value = Resource.error(it)
+        }
     }
 }

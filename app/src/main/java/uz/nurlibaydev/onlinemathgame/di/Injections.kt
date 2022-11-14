@@ -23,7 +23,7 @@ val dataModule = module {
     single { FirebaseFirestore.getInstance() }
     single { FirebaseStorage.getInstance() }
     single { AuthHelper(get()) }
-    single { PlayerHelper(get(), get()) }
+    single { PlayerHelper(get(), get(),get()) }
     single { InvitationHelper(get(),get(),get()) }
 }
 
@@ -40,5 +40,5 @@ val viewModelModule = module {
     viewModel { SignUpViewModel(get()) }
     viewModel { PlayerViewModel(get()) }
     viewModel { MainViewModel(get()) }
-    viewModel { GameViewModel(get()) }
+    viewModel { GameViewModel(get(),get()) }
 }

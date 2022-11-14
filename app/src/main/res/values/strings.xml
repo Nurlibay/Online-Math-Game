@@ -34,4 +34,11 @@
     <string name="next">Next</string>
     <string name="your_score">Your Score: 5/10</string>
     <string name="opponent_score">Opponent Score: 7/10</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="error">Error</string>
+    <string name="close">Close</string>
+    <string name="message">Message</string>
+    <string name="progress">Progress</string>
 </resources>

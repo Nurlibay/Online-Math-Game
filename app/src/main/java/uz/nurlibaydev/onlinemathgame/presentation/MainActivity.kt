@@ -22,14 +22,11 @@ import uz.nurlibaydev.onlinemathgame.domain.MainRepositoryImpl
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
 
     private val pref: SharedPref by inject()
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +35,7 @@ class MainActivity : AppCompatActivity() {
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.findNavController()
-
         setLocale()
-
-
     }
 
     override fun onBackPressed() {

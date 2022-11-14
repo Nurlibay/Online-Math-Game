@@ -13,6 +13,7 @@ import uz.nurlibaydev.onlinemathgame.R
 import uz.nurlibaydev.onlinemathgame.data.source.pref.SharedPref
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenSignUpBinding
 import uz.nurlibaydev.onlinemathgame.utils.ResourceState
+import uz.nurlibaydev.onlinemathgame.utils.extenions.showError
 import uz.nurlibaydev.onlinemathgame.utils.extenions.showMessage
 
 class SignUpScreen : Fragment(R.layout.screen_sign_up) {
@@ -60,7 +61,7 @@ class SignUpScreen : Fragment(R.layout.screen_sign_up) {
                 }
                 ResourceState.NETWORK_ERROR -> {
                     setLoading(false)
-                    showMessage(getString(R.string.no_internet))
+                    showError(getString(R.string.no_internet))
                 }
             }
         }
@@ -78,11 +79,11 @@ class SignUpScreen : Fragment(R.layout.screen_sign_up) {
                 }
                 ResourceState.ERROR -> {
                     setLoading(false)
-                    showMessage(it.message.toString())
+                    showError(it.message.toString())
                 }
                 ResourceState.NETWORK_ERROR -> {
                     setLoading(false)
-                    showMessage(getString(R.string.no_internet))
+                    showError(getString(R.string.no_internet))
                 }
             }
         }

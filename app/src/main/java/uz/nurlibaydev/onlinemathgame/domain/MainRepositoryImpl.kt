@@ -92,4 +92,6 @@ class MainRepositoryImpl(
     ) {
         invitationHelper.setAnswers(gameId, userType, correctAnswerCount, inCorrectAnswerCount, onSuccess, onFailure)
     }
+
+    override fun updateScore(score: Int, onSuccess: (Int) -> Unit, onFailure: (String) -> Unit)  = playerHelper.updateScore(score, onSuccess, onFailure)
 }

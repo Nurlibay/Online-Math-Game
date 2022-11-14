@@ -11,6 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.nurlibaydev.onlinemathgame.R
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenSignInBinding
 import uz.nurlibaydev.onlinemathgame.utils.ResourceState
+import uz.nurlibaydev.onlinemathgame.utils.extenions.showError
 import uz.nurlibaydev.onlinemathgame.utils.extenions.showMessage
 
 /**
@@ -54,7 +55,7 @@ class SignInScreen: Fragment(R.layout.screen_sign_in) {
                 }
                 ResourceState.NETWORK_ERROR -> {
                     setLoading(false)
-                    showMessage(getString(R.string.no_internet))
+                    showError(getString(R.string.no_internet))
                 }
             }
         }
