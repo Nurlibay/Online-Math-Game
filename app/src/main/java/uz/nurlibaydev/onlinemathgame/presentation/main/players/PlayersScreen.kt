@@ -7,8 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.firebase.auth.FirebaseAuth
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.nurlibaydev.onlinemathgame.R
+import uz.nurlibaydev.onlinemathgame.data.models.PlayerData
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenPlayersBinding
 import uz.nurlibaydev.onlinemathgame.presentation.dialog.ProgressDialog
 import uz.nurlibaydev.onlinemathgame.utils.ResourceState
@@ -24,6 +27,7 @@ class PlayersScreen : Fragment(R.layout.screen_players) {
     private val adapter by lazy { PlayersAdapter() }
     private val viewModel: PlayerViewModel by viewModel()
     private lateinit var dialog: ProgressDialog
+    private val auth: FirebaseAuth by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,7 +105,13 @@ class PlayersScreen : Fragment(R.layout.screen_players) {
                 }
                 ResourceState.SUCCESS -> {
                     setLoading(false)
-                    adapter.submitList(it.data)
+                    val playerList = mutableListOf<PlayerData>()
+                    for(player in it.data!!){
+                        if(player.id != auth.uid.toString()){
+                            playerList.add(player)
+                        }
+                    }
+                    adapter.submitList(playerList)
                 }
                 ResourceState.ERROR -> {
                     setLoading(false)

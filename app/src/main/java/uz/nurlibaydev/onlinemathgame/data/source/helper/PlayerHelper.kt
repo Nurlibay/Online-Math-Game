@@ -40,13 +40,7 @@ class PlayerHelper(
                 val players = it.documents.map { player ->
                     player.toObject(PlayerData::class.java)!!
                 }
-                val playerList = mutableListOf<PlayerData>()
-                for(player in players){
-                    if(player.id != auth.uid.toString()){
-                        playerList.add(player)
-                    }
-                }
-                onSuccess.invoke(playerList)
+                onSuccess.invoke(players)
             }
             .addOnFailureListener {
                 onFailure.invoke(it.localizedMessage)
@@ -54,7 +48,6 @@ class PlayerHelper(
     }
 
     fun updateScore(score: Int, onSuccess: (Int) -> Unit, onFailure: (String) -> Unit) {
-
         val lastScore = sharedPref.score + score
         db.collection(Constants.PLAYERS).document(auth.uid!!).update(
             mapOf(
