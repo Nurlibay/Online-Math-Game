@@ -36,4 +36,8 @@ class AuthHelper(
                 onFailure.invoke(it.localizedMessage)
             }
     }
+
+    fun logout(){
+        auth.signOut()
+    }
 }

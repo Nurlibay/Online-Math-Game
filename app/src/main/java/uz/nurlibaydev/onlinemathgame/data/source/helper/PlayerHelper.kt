@@ -17,11 +17,10 @@ import java.util.*
 class PlayerHelper(
     private val auth: FirebaseAuth,
     private val db: FirebaseFirestore,
-    private val sharedPref: SharedPref
+    private val sharedPref: SharedPref,
 ) {
     fun addPlayerToDb(fullName: String, onSuccess: () -> Unit, onFailure: (msg: String?) -> Unit) {
-        val playerData =
-            PlayerData(auth.currentUser!!.uid, "", fullName, auth.currentUser!!.email!!, 0)
+        val playerData = PlayerData(auth.currentUser!!.uid, fullName, "", auth.currentUser!!.email!!, 0)
         db.collection(Constants.PLAYERS).document(playerData.id).set(playerData)
             .addOnSuccessListener {
                 onSuccess.invoke()
@@ -33,7 +32,7 @@ class PlayerHelper(
 
     fun getAllPlayers(
         onSuccess: (players: List<PlayerData>) -> Unit,
-        onFailure: (msg: String?) -> Unit
+        onFailure: (msg: String?) -> Unit,
     ) {
         db.collection(Constants.PLAYERS).get()
             .addOnSuccessListener {
@@ -68,7 +67,6 @@ class PlayerHelper(
     suspend fun uploadImage(path: String): String {
 
         val fileName = UUID.randomUUID().toString() + ".jpg"
-
 
         val deferred = CompletableDeferred<String>()
         val refStorage = FirebaseStorage.getInstance().reference.child("images/$fileName")

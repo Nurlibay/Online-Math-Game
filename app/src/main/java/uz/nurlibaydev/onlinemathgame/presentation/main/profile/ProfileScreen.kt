@@ -13,12 +13,15 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.github.drjacky.imagepicker.ImagePicker
 import com.github.drjacky.imagepicker.constant.ImageProvider
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.nurlibaydev.onlinemathgame.R
+import uz.nurlibaydev.onlinemathgame.data.source.pref.SharedPref
 import uz.nurlibaydev.onlinemathgame.databinding.ScreenProfileBinding
 import uz.nurlibaydev.onlinemathgame.presentation.MainActivity
 import uz.nurlibaydev.onlinemathgame.presentation.dialog.ChangeNameDialog
 import uz.nurlibaydev.onlinemathgame.utils.Constants
+import uz.nurlibaydev.onlinemathgame.utils.extenions.onClick
 
 /**
  *  Created by Nurlibay Koshkinbaev on 12/11/2022 02:07
@@ -29,6 +32,8 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
     private val binding: ScreenProfileBinding by viewBinding()
     private val viewModel: ProfileViewModel by viewModel<ProfileViewModelImpl>()
     private var mProfileUri: Uri? = null
+
+    private val pref: SharedPref by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,11 +46,14 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
-            tvChangeUserName.setOnClickListener {
+            tvChangeUserName.onClick {
                 viewModel.changeName()
             }
-            tvChangeImageIcon.setOnClickListener {
+            tvChangeImageIcon.onClick {
                 viewModel.changeImage()
+            }
+            ivLogout.onClick {
+                viewModel.logout()
             }
 //            tvHelp.setOnClickListener {
 //                viewModel.helpClicked()
@@ -54,8 +62,17 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
 //                viewModel.supportClicked()
 //            }
         }
+        viewModel.logoutLiveData.observe(viewLifecycleOwner, logoutObserver)
         viewModel.nameLiveData.observe(viewLifecycleOwner, nameObserver)
         viewModel.imageLiveData.observe(viewLifecycleOwner, imageObserver)
+    }
+
+    private val logoutObserver = Observer<Unit> {
+        pref.isSigned = false
+        Intent(requireContext(), MainActivity::class.java).also {
+            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            requireActivity().startActivity(it)
+        }
     }
 
     private val nameObserver = Observer<String> {

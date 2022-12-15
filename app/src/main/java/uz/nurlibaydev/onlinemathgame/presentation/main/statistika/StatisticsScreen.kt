@@ -3,6 +3,7 @@ package uz.nurlibaydev.onlinemathgame.presentation.main.statistika
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.nurlibaydev.onlinemathgame.R
@@ -11,6 +12,7 @@ import uz.nurlibaydev.onlinemathgame.presentation.dialog.ProgressDialog
 import uz.nurlibaydev.onlinemathgame.presentation.main.players.PlayerViewModel
 import uz.nurlibaydev.onlinemathgame.utils.ResourceState
 import uz.nurlibaydev.onlinemathgame.utils.extenions.addVertDivider
+import uz.nurlibaydev.onlinemathgame.utils.extenions.onClick
 import uz.nurlibaydev.onlinemathgame.utils.extenions.showError
 
 /**
@@ -31,6 +33,9 @@ class StatisticsScreen: Fragment(R.layout.screen_statistics) {
         binding.apply {
             rvPlayersStatistics.adapter = adapter
             rvPlayersStatistics.addVertDivider(requireContext())
+            iconBack.onClick {
+                findNavController().popBackStack()
+            }
         }
         setupObserver()
     }

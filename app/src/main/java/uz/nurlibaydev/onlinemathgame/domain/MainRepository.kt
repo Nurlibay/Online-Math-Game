@@ -20,6 +20,8 @@ interface MainRepository {
         onFailure: (msg: String?) -> Unit
     )
 
+    fun logout()
+
     fun addPlayerToDb(
         fullName: String, onSuccess: () -> Unit, onFailure: (msg: String?) -> Unit
     )

@@ -21,6 +21,9 @@ interface ProfileViewModel {
 
     val supportLiveData: LiveData<Unit>
 
+    val logoutLiveData: LiveData<Unit>
+    fun logout()
+
     fun changeName()
 
     fun changeImage()

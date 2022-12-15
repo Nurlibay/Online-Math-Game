@@ -16,11 +16,9 @@ class ProfileViewModelImpl @Inject constructor(
     private val repository: MainRepository,
 ) : ViewModel(), ProfileViewModel {
 
-    override val nameLiveData: MutableLiveData<String> =
-        MutableLiveData(sharedPreference.fullName)
+    override val nameLiveData: MutableLiveData<String> = MutableLiveData(sharedPreference.fullName)
 
-    override val imageLiveData: MutableLiveData<String> =
-        MutableLiveData(sharedPreference.fullName)
+    override val imageLiveData: MutableLiveData<String> = MutableLiveData(sharedPreference.fullName)
 
     override val backLiveData: MutableLiveData<Unit> = MutableLiveData()
 
@@ -33,6 +31,12 @@ class ProfileViewModelImpl @Inject constructor(
     override val contactLiveData: MutableLiveData<Unit> = MutableLiveData()
 
     override val supportLiveData: MutableLiveData<Unit> = MutableLiveData()
+
+    override val logoutLiveData: MutableLiveData<Unit> = MutableLiveData()
+
+    override fun logout() {
+        logoutLiveData.postValue(Unit)
+    }
 
     override fun changeName() {
         changeNameLiveData.postValue(Unit)

@@ -35,6 +35,10 @@ class MainRepositoryImpl(
         authHelper.signUp(fullName, email, password, onSuccess, onFailure)
     }
 
+    override fun logout() {
+        authHelper.logout()
+    }
+
     override fun addPlayerToDb(
         fullName: String,
         onSuccess: () -> Unit,
